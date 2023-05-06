@@ -1,4 +1,4 @@
-import { LitElement, html } from 'lit-element';
+import { html,LitElement} from 'https://cdn.jsdelivr.net/gh/lit/dist@2/all/lit-all.min.js';
 
 class ImageUpload extends LitElement {
   static get properties() {
@@ -12,13 +12,13 @@ class ImageUpload extends LitElement {
     this.imageUrl = '';
   }
 
-  render() {
-    return html`
+  render() {'
+    return html
       <div>
         <input type="text" placeholder="Enter image URL" @change="${this.handleUrlChange}">
         <img src="${this.imageUrl}" alt="Uploaded image">
       </div>
-    `;
+    ';
   }
 
   handleUrlChange(e) {
@@ -29,4 +29,6 @@ class ImageUpload extends LitElement {
   }
 }
 
-customElements.define('image-upload', ImageUpload);
+const elementName = 'image-upload';
+customElements.define(elementName, ImageUpload);
+
