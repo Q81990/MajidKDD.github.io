@@ -2,15 +2,33 @@ import { html,LitElement} from 'https://cdn.jsdelivr.net/gh/lit/dist@2/all/lit-a
 import { html, render} from 'https://unpkg.com/lit-html?module';
 
 export class ImageUpload extends LitElement {
+  
   static get properties() {
     return {
-      imageUrl: { type: String }
+      myimageUrl: { type: String }
+    };
+  }
+  
+   // return a promise for contract changes.
+  static getMetaConfig() {
+    return {
+      controlName: 'ImageUpload',
+      fallbackDisableSubmit: false,
+      version: '1.2',
+      properties: {
+        myimageUrl: {
+          type: 'string',
+          title: 'Who',
+          description: 'Who to say hello to'
+        }
+      }
     };
   }
 
+
   constructor() {
     super();
-    this.imageUrl = '';
+    this.myimageUrl = '';
   }
 
   render() {
@@ -21,7 +39,7 @@ export class ImageUpload extends LitElement {
   handleUrlChange(e) {
     const imageUrl = e.target.value;
     if (imageUrl !== '') {
-      this.imageUrl = imageUrl;
+      this.myimageUrl = imageUrl;
     }
   }
 }
