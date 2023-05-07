@@ -1,7 +1,7 @@
 import { html,LitElement} from 'https://cdn.jsdelivr.net/gh/lit/dist@2/all/lit-all.min.js';
 import { html, render} from 'https://unpkg.com/lit-html?module';
 
-class ImageUpload extends LitElement {
+export class ImageUpload extends LitElement {
   static get properties() {
     return {
       imageUrl: { type: String }
@@ -14,12 +14,8 @@ class ImageUpload extends LitElement {
   }
 
   render() {
-    return html
-      <div>
-        <input type="text" placeholder="Enter image URL" @change="${this.handleUrlChange}">
-        <img src="${this.imageUrl}" alt="Uploaded image">
-      </div>
-    ;
+    return html`<div> <input type="text" placeholder="Enter image URL" @change="${this.handleUrlChange}"> <img src="${this.imageUrl}" alt="Uploaded image"> </div> `;
+    
   }
 
   handleUrlChange(e) {
