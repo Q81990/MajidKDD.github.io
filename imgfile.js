@@ -33,5 +33,5 @@ export class ImageControl extends LitElement {
 }
 
 // registering the web component
-const elementName = 'myimage-control';
+const elementName = 'mytube-control';
 customElements.define(elementName, ImageControl);
