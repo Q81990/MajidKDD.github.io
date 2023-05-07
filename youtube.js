@@ -9,7 +9,7 @@ export class YoutubeControl extends LitElement {
   // return a promise for contract changes.
   static getMetaConfig() {
     return {
-      controlName: 'Image Control',
+      controlName: 'YouTube Control',
       fallbackDisableSubmit: false,
       version: '1.2',
       properties: {
@@ -28,7 +28,7 @@ export class YoutubeControl extends LitElement {
   }
 
   render() {
-    return html`<iframe width="560" height="315" src="${this.videoUrl}" frameborder="0" allowfullscreen></iframe>`;
+    return html`<img src="${this.videoUrl}" alt="Preview Image">`;
   }
 }
 
