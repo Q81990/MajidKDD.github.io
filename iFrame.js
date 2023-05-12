@@ -10,14 +10,13 @@ import { html,LitElement} from 'https://cdn.jsdelivr.net/gh/lit/dist@2/all/lit-a
 export class MediaPlayerPlugIn extends LitElement {
   
   static properties = {
-    videosrc: {type: String}, 
-    Platform: {type: String}   
+    videosrc: {type: String} 
   };
   
   // return a promise for contract changes.
   static getMetaConfig() {
     return {
-      controlName: 'Media Player',
+      controlName: 'Media Player1',
       fallbackDisableSubmit: false,
       groupName: 'Media Player',
       version: '1.2',
@@ -26,16 +25,7 @@ export class MediaPlayerPlugIn extends LitElement {
           type: 'string',
           title: 'Media Source',
           description: 'Importend Youtube embeded link is needed (e.g https://www.youtube.com/embed/vpKcM4MxPzc)'
-        },       
-        Platform: {
-          title: 'Platform',
-          type: 'string',
-        	enum: ['YouTube', 'Vimeo'],
-          showAsRadio: false,
-          verticalLayout: true,
-          defaultValue: 'YouTube',
-          description: 'Choose your Platform (YouTube is supported)'
-        }         
+        }
         
       }
     };
@@ -104,5 +94,5 @@ export class MediaPlayerPlugIn extends LitElement {
 }
 
 // registering the web component
-const elementName = 'mediaplayer-plugin';
+const elementName = 'mediaplayer-plugin1';
 customElements.define(elementName, MediaPlayerPlugIn);
