@@ -41,14 +41,14 @@ export class OneOne extends LitElement {
                 
             
             <iframe
-                src="${this.videosrc}
+                src="${this.videosrc} style="border:2px solid red;" width="100%; border:none;" height="100%"
             ></iframe>
       `;
     
     }
     else {      
       return html`
-        <p>OK please enter a source </p>  
+        <p>OK22 please enter a source </p>  
       `;   
     }
   }     
@@ -63,7 +63,7 @@ export class OneOne extends LitElement {
 
 
   headerTemplate() {
-    return html` <link rel="stylesheet" href="https://cdn.plyr.io/3.7.3/plyr.css">
+    return html` 
                   
                 
                 `;
