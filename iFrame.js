@@ -49,7 +49,7 @@ export class MediaPlayerPlugIn extends LitElement {
       
       return html`
                 
-            <div id="player">
+            
             <iframe id="ntxFormContainer-f8b4ec53-cd09-4fe2-85b6-a5e5a66326cd" scrolling="no" style="width:100%; border:none;" height="100%"
                 src="${this.videosrc}
             ></iframe>            
@@ -60,7 +60,7 @@ export class MediaPlayerPlugIn extends LitElement {
     }
     else {      
       return html`
-        <p>Bitte geben Sie ein Video ein / Please enter a source </p>  
+        <p>ok Please enter a source </p>  
       `;   
     }
   }     
@@ -75,10 +75,8 @@ export class MediaPlayerPlugIn extends LitElement {
 
 
   headerTemplate() {
-    return html` <link rel="stylesheet" href="https://cdn.plyr.io/3.7.3/plyr.css">
-                  <script src="https://cdn.plyr.io/3.7.3/plyr.js" integrity="sha384-33jVIndfkOX7H37cczCzt4rl3sbeUuYt1Qav5aQhKxf74q6Hz4dot4A/yYXZxF36" crossorigin="anonymous"></script>
-                  <script src="https://ntx-apacsuccess.workflowcloud.com/embedform/iframe/ntx-embed-iframe.js" data-id="ntxFormContainer-f8b4ec53-cd09-4fe2-85b6-a5e5a66326cd"></script>
-   
+    return html` <link rel="stylesheet" href="https://cdn.plyr.io/3.7.3/plyr.css">                  
+                  <script src="https://ntx-apacsuccess.workflowcloud.com/embedform/iframe/ntx-embed-iframe.js" data-id="ntxFormContainer-f8b4ec53-cd09-4fe2-85b6-a5e5a66326cd"></script>   
                 
                 `;
   }
@@ -96,8 +94,7 @@ export class MediaPlayerPlugIn extends LitElement {
     return html`       
         
            ${this.headerTemplate()}
-           ${this.checkAdress()} 
-           ${this.footerTemplate()}
+           ${this.checkAdress()}           
           
       
     `;     
