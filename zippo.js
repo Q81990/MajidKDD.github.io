@@ -1,15 +1,20 @@
 import { html,LitElement} from 'https://cdn.jsdelivr.net/gh/lit/dist@2/all/lit-all.min.js';
 
 export class ZipCodeElement extends LitElement {
+  
+   static properties = {
+    zipCode: {type: String}     
+  };
+  
+  
+  
   constructor() {
     super();
     this.zipCode = '';
     this.responseData = null;
   }
 
-  static styles = css`
-    /* Add your custom styles here */
-  `;
+ 
 
   async connectedCallback() {
     super.connectedCallback();
