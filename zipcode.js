@@ -1,12 +1,12 @@
 import { html, LitElement} from 'https://cdn.jsdelivr.net/gh/lit/dist@2/all/lit-all.min.js';
 
-export  class WeatherComponent extends LitElement {
- 
-   static properties = {
-    zipcode: {type: String} 
-  };
+class WeatherComponent extends LitElement {
  
 
+  constructor() {
+    super();
+    this.weatherData = null;
+  }
 
   async connectedCallback() {
     super.connectedCallback();
@@ -23,26 +23,21 @@ export  class WeatherComponent extends LitElement {
       console.error('Error fetching weather data:', error);
     }
   }
-  constructor() {
-    super();
-    this.weatherData = null;
-  }
+
   render() {
     if (!this.weatherData) {
       return html`<p>Loading weather data...</p>`;
     }
 
-    const { country } = this.weatherData;
+    const { temperature, description } = this.weatherData;
     return html`
       <div>
-        <h2>Current Weather</h2>        
+        <h2>Current Weather</h2>
+        <p>Temperature: ${temperature}°C</p>
         <p>Description: ${description}</p>
       </div>
     `;
   }
 }
 
-// registering the web component
-const elementName = 'Zip-Code';
-customElements.define(elementName, WeatherComponent);
-
+customElements.define('weather-component', WeatherComponent);
