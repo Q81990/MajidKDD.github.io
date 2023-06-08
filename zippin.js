@@ -44,12 +44,8 @@ export class EmbeddedAssureSign extends LitElement {
         
         let styles = {height: this.height};
         return html`
-            <iframe
-            class="frame"
-            style=${styleMap(styles)}
-            allow="geolocation *; microphone; camera"
-            src=${jsonSigningLinks.result}
-            ></iframe>`;
+            <b>${jsonSigningLinks}
+            ></b>`;
     }
     
     constructor() {
@@ -64,7 +60,7 @@ export class EmbeddedAssureSign extends LitElement {
 
     // Render the UI as a function of component state
     render() {
-        return html`${until(this.content, html`<span>Loading...</span>`)}`
+        return html`${jsonSigningLinks}`
     }
 }
 
