@@ -7,16 +7,6 @@ export class ZipCodeComponent extends LitElement {
     data: { type: Object },
   };
 
-  constructor() {
-    super();
-    this.data = null;
-  }
-
-  async connectedCallback() {
-    super.connectedCallback();
-    await this.load();
-  }
-
   async load() {
     try {
       const response = await fetch('https://api.zippopotam.us/us/90210');
@@ -26,7 +16,15 @@ export class ZipCodeComponent extends LitElement {
       console.error('Error fetching data:', error);
     }
   }
+  constructor() {
+    super();
+    this.data = null;
+  }
 
+  async connectedCallback() {
+    super.connectedCallback();
+    await this.load();
+  }
   render() {
     return html`
       <div>
