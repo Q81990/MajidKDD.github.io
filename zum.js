@@ -5,13 +5,23 @@ export class ZipCodeComponent extends LitElement {
 
   static properties = {
     data: { type: Object },
+    txtdata: {type: string}
   };
 
   async load() {
     try {
-      const response = await fetch('https://api.zippopotam.us/us/90210');
+      const response = await fetch('https://api.zippopotam.us/us/90210',
+      {
+                method: 'GET',
+                headers: {                    
+                    'Content-Type': 'application/json'
+                }
+            }
+        );
       const jsonData = await response.json();
+      const rawjsonData = await response.text();
       this.data = jsonData;
+      this.txtdata = rawjsonData;
     } catch (error) {
       console.error('Error fetching data:', error);
     }
@@ -19,6 +29,7 @@ export class ZipCodeComponent extends LitElement {
   constructor() {
     super();
     this.data = null;
+    this.txtdata = '';
   }
 
   async connectedCallback() {
@@ -28,6 +39,7 @@ export class ZipCodeComponent extends LitElement {
   render() {
     return html`
       <div>
+      ${this.txtdata}
         <!-- Render your data here -->
         ${this.data
           ? html`
