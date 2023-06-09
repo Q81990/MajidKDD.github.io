@@ -10,18 +10,12 @@ export class ZipCodeComponent extends LitElement {
 
   async load() {
     try {
-      const response = await fetch('https://api.zippopotam.us/us/90210',
-      {
-                method: 'GET',
-                headers: {                    
-                    'Content-Type': 'application/json'
-                }
-            }
-        );
-      const jsonData = await response.json();
-      const rawjsonData = await response.text();
-      this.data = jsonData;
-      this.txtdata = rawjsonData;
+     const userAction = async () => {
+  const response = await fetch('https://api.zippopotam.us/us/90210');
+  const myJson = await response.json(); //extract JSON from the http response  
+  alert(myJson);
+  
+}
     } catch (error) {
       console.error('Error fetching data:', error);
     }
@@ -39,18 +33,10 @@ export class ZipCodeComponent extends LitElement {
   render() {
     return html`
       <div>
-      ${this.txtdata}
-        <!-- Render your data here -->
-        ${this.data
-          ? html`
-              <p>City: ${this.data.places[0].place name}</p>
-              <p>State: ${this.data.places[0].state}</p>
-              <!-- Add other desired data fields here -->
-            `
-          : html`<p>Loading...</p>`}
+      ${this.myJson}       
       </div>
     `;
   }
 }
 
-customElements.define('zip-it', ZipCodeComponent);
+customElements.define('zip-itt', ZipCodeComponent);
