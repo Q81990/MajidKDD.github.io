@@ -23,7 +23,11 @@ export class YoutubeControl extends LitElement {
   }
   
   async load() {
-    return "hala";
+  const userAction = async () => {
+  const response = await fetch('https://api.zippopotam.us/us/90210');
+  const myJson = await response.json();   
+  }
+    return myJson.country;
   }
   
   constructor() {
