@@ -30,7 +30,7 @@ export class YoutubeControl extends LitElement {
   
   async load() {
   const response = await fetch('https://api.zippopotam.us/us/90210');
-  const myJson = await response.text();   
+  const myJson = await response.json();   
   const country = myJson;
   //this.country = country;    
     return "majiddddd";
@@ -44,7 +44,7 @@ export class YoutubeControl extends LitElement {
 
       async connectedCallback() {
         super.connectedCallback();
-         this.videoUrl = this.load();
+         this.videoUrl = "hello";    // this.load();
         //await this.load();
     }
   
