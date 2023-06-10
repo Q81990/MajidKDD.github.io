@@ -24,11 +24,11 @@ export class YoutubeControl extends LitElement {
   
   constructor() {
     super();
-    this.videoUrl = '';
+    this.videoUrl = 'majid';
   }
 
   render() {
-    return html`<img src="${this.videoUrl}" alt="Preview Image">`;
+    return html`<p>"${this.videoUrl}" </p>`;
   }
 }
 
