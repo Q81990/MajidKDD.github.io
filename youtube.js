@@ -28,7 +28,7 @@ export class YoutubeControl extends LitElement {
   
   constructor() {
     super();
-    this.videoUrl = 'majid';
+   
   }
 
       async connectedCallback() {
