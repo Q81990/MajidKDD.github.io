@@ -1,4 +1,4 @@
-import { html,LitElement} from 'https://cdn.jsdelivr.net/gh/lit/dist@2/all/lit-all.min.js';
+import {css, html, LitElement, styleMap, until} from 'https://cdn.jsdelivr.net/gh/lit/dist@2/all/lit-all.min.js';
 // define the component
 export class YoutubeControl extends LitElement {
   
@@ -27,7 +27,7 @@ export class YoutubeControl extends LitElement {
   const response = await fetch('https://api.zippopotam.us/us/90210');
   const myJson = await response.json();   
   }
-    return myJson.country;
+     return html`<p>"${myJson.country}" </p>`;
   }
   
   constructor() {
@@ -40,9 +40,13 @@ export class YoutubeControl extends LitElement {
         this.videoUrl = this.load();
     }
   
-  render() {
-    return html`<p>"${this.videoUrl}" </p>`;
-  }
+ // render() {
+ //   return html`<p>"${this.videoUrl}" </p>`;
+//  }
+       
+    render() {
+        return html`${until(this.videoUrl, html`<span>Loading...</span>`)}`
+    }
 }
 
 // registering the web component
