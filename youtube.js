@@ -22,11 +22,20 @@ export class YoutubeControl extends LitElement {
     };
   }
   
+  async load() {
+    return "hala";
+  }
+  
   constructor() {
     super();
     this.videoUrl = 'majid';
   }
 
+      async connectedCallback() {
+        super.connectedCallback();
+        this.videoUrl = this.load();
+    }
+  
   render() {
     return html`<p>"${this.videoUrl}" </p>`;
   }
