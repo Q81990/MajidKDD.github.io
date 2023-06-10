@@ -24,7 +24,7 @@ export class YoutubeControl extends LitElement {
   
   
   renderCountry(country) {
-    this.videoUrl = = html `  <div>Country: ${country}</div>  `;
+    this.videoUrl =  html `  <div>Country: ${country}</div>  `;
   }
   
   
