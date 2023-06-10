@@ -30,8 +30,8 @@ export class YoutubeControl extends LitElement {
   
   async load() {
   const response = await fetch('https://api.zippopotam.us/us/90210');
-  const myJson = await response.json();
-    const countryPromise = Promise.resolve(myJson?.places);
+  const myJson = await response.text();
+    const countryPromise = Promise.resolve(myJson);
   const country = await countryPromise;
   //this.country = country;    
     return country;
