@@ -34,7 +34,7 @@ export class YoutubeControl extends LitElement {
     const countryPromise = Promise.resolve(myJson?.country);
   const country = await countryPromise;
   //this.country = country;    
-    return "majiddddd";
+    return country;
     //html `  <div>Country: ${country}</div>  `;
   }
   
@@ -51,7 +51,7 @@ export class YoutubeControl extends LitElement {
     }
   
  render() {
-    return html`<button onclick="load()">Click ccx2222me</button><p>"${this.videoUrl}" </p>`;
+    return html`<button onclick="load()">Click ccx333me</button><p>"${this.videoUrl}" </p>`;
  }
 //  render() {
 //    return html`   <div>    <b>Country:</b>   </div>   `;
