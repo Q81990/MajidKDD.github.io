@@ -24,7 +24,7 @@ export class YoutubeControl extends LitElement {
   
   
   renderCountry(country) {
-    this.shadowRoot.innerHTML = `  <div>Country: ${country}</div>  `;
+    this.videoUrl = = html `  <div>Country: ${country}</div>  `;
   }
   
   
@@ -45,8 +45,8 @@ export class YoutubeControl extends LitElement {
 
       async connectedCallback() {
         super.connectedCallback();
-        //this.videoUrl = this.load();
-        await this.load();
+        this.videoUrl = this.load();
+        //  await this.load();
     }
   
  render() {
