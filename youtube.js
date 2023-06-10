@@ -40,13 +40,11 @@ export class YoutubeControl extends LitElement {
         this.videoUrl = this.load();
     }
   
- // render() {
- //   return html`<p>"${this.videoUrl}" </p>`;
-//  }
+ render() {
+    return html`<button onclick="load()">Click me</button><p>"${this.videoUrl}" </p>`;
+ }
        
-    render() {
-        return html`${until(this.videoUrl, html`<span>Loading...</span>`)}`
-    }
+
 }
 
 // registering the web component
