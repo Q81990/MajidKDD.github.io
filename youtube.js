@@ -44,7 +44,7 @@ export class YoutubeControl extends LitElement {
 
       async connectedCallback() {
         super.connectedCallback();
-         this.videoUrl = this.load();
+         this.videoUrl = await this.load();
         //await this.load();
     }
   
