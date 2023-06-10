@@ -30,13 +30,15 @@ export class YoutubeControl extends LitElement {
   
   async load() {
   const response = await fetch('https://api.zippopotam.us/us/90210');
-  const myJson = await response.json();   
-  const country = myJson;
+  const myJson = await response.json();
+    const countryPromise = Promise.resolve(myJson?.country);
+  const country = await countryPromise;
   //this.country = country;    
     return "majiddddd";
     //html `  <div>Country: ${country}</div>  `;
   }
   
+ 
   constructor() {
     super();
    
@@ -49,7 +51,7 @@ export class YoutubeControl extends LitElement {
     }
   
  render() {
-    return html`<button onclick="load()">Click ccx111zme</button><p>"${this.videoUrl}" </p>`;
+    return html`<button onclick="load()">Click ccx2222me</button><p>"${this.videoUrl}" </p>`;
  }
 //  render() {
 //    return html`   <div>    <b>Country:</b>   </div>   `;
