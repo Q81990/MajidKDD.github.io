@@ -30,7 +30,7 @@ export class abnControl extends LitElement {
   
   async load() {
   const response = await fetch('https://abr.business.gov.au/ABRXMLSearch/AbrXmlSearch.asmx/ABRSearchByABN?searchString=67129119731&includeHistoricalDetails=N&authenticationGuid=a1aceb80-e8bd-46f0-a5e1-e232c4a4c417');
-  const myJson = await response.json();
+  const myJson = await response;
     const countryPromise = Promise.resolve(myJson);
   const country = await countryPromise;
   //this.country = country;    
