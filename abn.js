@@ -60,5 +60,5 @@ export class YoutubeControl extends LitElement {
 }
 
 // registering the web component
-const elementName = 'ABN-control';
+const elementName = 'youtube-control';
 customElements.define(elementName, YoutubeControl);
