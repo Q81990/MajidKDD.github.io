@@ -30,10 +30,13 @@ export class abnControl extends LitElement {
   
   async load() {
   const response = await fetch('https://abr.business.gov.au/ABRXMLSearch/AbrXmlSearch.asmx/ABRSearchByABN?searchString=67129119731&includeHistoricalDetails=N&authenticationGuid=a1aceb80-e8bd-46f0-a5e1-e232c4a4c417');
-  const myJson = await response;
+  const myJson = await response.text();
     const countryPromise = Promise.resolve(myJson);
-  const country = await countryPromise;
-  //this.country = country;    
+  
+        const parser = new DOMParser();
+        const xmlDoc = parser.parseFromString(myJson, 'text/xml');
+        const xpathResult = xmlDoc.evaluate('//ABRPayloadSearchResults/response/businessEntity/mainName/organisationName',xmlDoc,null,XPathResult.ANY_TYPE,null);
+    const country = await xpathResult; 
     return country;
     //html `  <div>Country: ${country}</div>  `;
   }
@@ -51,7 +54,7 @@ export class abnControl extends LitElement {
     }
   
  render() {
-    return html`<button onclick="load()">Click abn</button><p>"${this.videoUrl}" </p>`;
+    return html`<button onclick="load()">Click abnN2</button><p>"${this.videoUrl}" </p>`;
  }
 //  render() {
 //    return html`   <div>    <b>Country:</b>   </div>   `;
