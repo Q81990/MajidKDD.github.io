@@ -1,6 +1,6 @@
 import {css, html, LitElement, styleMap, until} from 'https://cdn.jsdelivr.net/gh/lit/dist@2/all/lit-all.min.js';
 // define the component
-export class YoutubeControl extends LitElement {
+export class abnControl extends LitElement {
   
   static properties = {
     videoUrl: {type: String},
@@ -9,13 +9,13 @@ export class YoutubeControl extends LitElement {
   // return a promise for contract changes.
   static getMetaConfig() {
     return {
-      controlName: 'wYouTubew Control',
+      controlName: 'abn Control',
       fallbackDisableSubmit: false,
       version: '1.2',
       properties: {
         videoUrl: {
           type: 'string',
-          title: 'YouTubeURL',
+          title: 'abnURL',
           description: 'Type the YouTube URL here'
         }
       }
@@ -29,9 +29,9 @@ export class YoutubeControl extends LitElement {
   
   
   async load() {
-  const response = await fetch('https://api.zippopotam.us/us/90210');
+  const response = await fetch('https://abr.business.gov.au/ABRXMLSearch/AbrXmlSearch.asmx/ABRSearchByABN?searchString=67129119731&includeHistoricalDetails=N&authenticationGuid=a1aceb80-e8bd-46f0-a5e1-e232c4a4c417');
   const myJson = await response.json();
-    const countryPromise = Promise.resolve(myJson.country);
+    const countryPromise = Promise.resolve(myJson);
   const country = await countryPromise;
   //this.country = country;    
     return country;
@@ -60,5 +60,5 @@ export class YoutubeControl extends LitElement {
 }
 
 // registering the web component
-const elementName = 'wyoutubew-control';
-customElements.define(elementName, YoutubeControl);
+const elementName = 'abn-control';
+customElements.define(elementName, abnControl);
