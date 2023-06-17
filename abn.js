@@ -9,7 +9,7 @@ export class YoutubeControl extends LitElement {
   // return a promise for contract changes.
   static getMetaConfig() {
     return {
-      controlName: 'YouTube Control',
+      controlName: 'wYouTubew Control',
       fallbackDisableSubmit: false,
       version: '1.2',
       properties: {
@@ -60,5 +60,5 @@ export class YoutubeControl extends LitElement {
 }
 
 // registering the web component
-const elementName = 'youtube-control';
+const elementName = 'wyoutubew-control';
 customElements.define(elementName, YoutubeControl);
