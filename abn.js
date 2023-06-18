@@ -35,10 +35,8 @@ export class abnControl extends LitElement {
   
         const parser = new DOMParser();
         const xmlDoc = parser.parseFromString(myJson, 'text/xml');
-        const xpathResult = xmlDoc.evaluate('//ABRPayloadSearchResults/response/businessEntity/mainName/organisationName',xmlDoc,null,XPathResult.ANY_TYPE,null);
-    // Extract middle 10 characters using substring
-    const extractedString = xpathResult.substring(77,90);
-    const country = await xmlDoc; 
+        const xpathResult = xmlDoc.getElementsByTagName("organisationName")[0].childNodes[0].nodeValue+'|   '+xmlDoc.getElementsByTagName("effectiveFrom")[0].childNodes[0].nodeValue+'|   '+xmlDoc.getElementsByTagName("ASICNumber")[0].childNodes[0].nodeValue;
+    const country = await xpathResult; 
     return country;
     //html `  <div>Country: ${country}</div>  `;  
   }
@@ -56,7 +54,7 @@ export class abnControl extends LitElement {
     }
   
  render() {
-    return html`<button onclick="load()">Click abnN555</button><p>"${this.videoUrl}" </p>`;
+    return html`<button onclick="load()">Click abnN7007</button><p>"${this.videoUrl}" </p>`;
  }
 //  render() {
 //    return html`   <div>    <b>Country:</b>   </div>   `;
