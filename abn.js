@@ -16,7 +16,7 @@ export class abnControl extends LitElement {
         videoUrl: {
           type: 'string',
           title: 'abnURL',
-           isValueField: true,
+          // isValueField: true,
           description: 'Type the YouTube URL here'
         }
       }
@@ -58,7 +58,7 @@ export class abnControl extends LitElement {
     }
   
  render() {
-    return html`<button onclick="load()">Click abnN8008</button><p>"${this.videoUrl}" </p>`;
+    return html`<button onclick="load()">Click abnN9009</button><p>"${this.videoUrl}" </p>`;
  }
 //  render() {
 //    return html`   <div>    <b>Country:</b>   </div>   `;
