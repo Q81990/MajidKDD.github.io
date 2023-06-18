@@ -29,8 +29,9 @@ export class abnControl extends LitElement {
   
   
   async load() {
-  const response = await fetch('https://abr.business.gov.au/ABRXMLSearch/AbrXmlSearch.asmx/ABRSearchByABN?searchString=67129119731&includeHistoricalDetails=N&authenticationGuid=a1aceb80-e8bd-46f0-a5e1-e232c4a4c417');
-  const myJson = await response.text();
+    const abnvar = 'https://abr.business.gov.au/ABRXMLSearch/AbrXmlSearch.asmx/ABRSearchByABN?searchString='+this.videoUrl+'&includeHistoricalDetails=N&authenticationGuid=a1aceb80-e8bd-46f0-a5e1-e232c4a4c417';
+  const response = await fetch(abnvar);
+    const myJson = await response.text();
     const countryPromise = Promise.resolve(myJson);
   
         const parser = new DOMParser();
@@ -54,7 +55,7 @@ export class abnControl extends LitElement {
     }
   
  render() {
-    return html`<button onclick="load()">Click abnN7007</button><p>"${this.videoUrl}" </p>`;
+    return html`<button onclick="load()">Click abnN8008</button><p>"${this.videoUrl}" </p>`;
  }
 //  render() {
 //    return html`   <div>    <b>Country:</b>   </div>   `;
