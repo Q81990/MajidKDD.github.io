@@ -16,6 +16,7 @@ export class abnControl extends LitElement {
         videoUrl: {
           type: 'string',
           title: 'abnURL',
+           isValueField: true,
           description: 'Type the YouTube URL here'
         }
       }
