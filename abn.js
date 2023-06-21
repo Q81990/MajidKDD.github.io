@@ -58,7 +58,7 @@ export class abnControl extends LitElement {
     }
   
  render() {
-    return html`<button onclick="load()">Click abnN9009</button><p>"${this.videoUrl}" </p>`;
+    return html`ABN Datat:<p>"${this.videoUrl}" </p>`;
  }
 //  render() {
 //    return html`   <div>    <b>Country:</b>   </div>   `;
