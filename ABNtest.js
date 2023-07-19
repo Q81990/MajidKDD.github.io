@@ -17,7 +17,7 @@ export class abnControltest extends LitElement {
           APIKey: {
           type: 'string',
           title: 'APIKey',
-          description: 'Provide APIKey'
+          description: 'Provide APIKey2'
         },    
         outcome: {
           title: 'abnName',
@@ -38,6 +38,18 @@ export class abnControltest extends LitElement {
     };
   }
 
+
+  constructor() {
+    super();
+   }
+
+  async connectedCallback() {
+        super.connectedCallback();
+         this.abnName = await this.load();        
+    }
+  
+
+  
  render() {
     return html`ABN Data:<p>"${this.abnName}" </p>`;
  }
