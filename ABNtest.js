@@ -17,7 +17,7 @@ export class abnControltest extends LitElement {
           APIKey: {
           type: 'string',
           title: 'APIKey',
-          description: 'Provide APIKey2'
+          description: 'Provide APIKey3'
         },    
         outcome: {
           title: 'abnName',
@@ -38,6 +38,21 @@ export class abnControltest extends LitElement {
     };
   }
 
+   async load() {
+ //   const abnvar = 'https://abr.business.gov.au/ABRXMLSearch/AbrXmlSearch.asmx/ABRSearchByABN?searchString='+this.abnName+'&includeHistoricalDetails=N&authenticationGuid=a1aceb80-e8bd-46f0-a5e1-e232c4a4c417';
+ const abnvar =   'https://abr.business.gov.au/abrxmlsearch/AbrXmlSearch.asmx/ABRSearchByNameAdvancedSimpleProtocol2017?name='+this.abnName+'&legalName=&tradingName=&businessName=&activeABNsOnly=&NSW=&SA=&ACT=&postcode=&VIC=&WA=&NT=&QLD=&TAS=&authenticationGuid='+this.APIKey+'&searchWidth=&minimumScore=&maxSearchResults=';
+  const response = await fetch(abnvar);
+    const myJson = await response.text();
+    const countryPromise = Promise.resolve(myJson);
+  
+        const parser = new DOMParser();
+        const xmlDoc = parser.parseFromString(myJson, 'text/xml');
+        //const xpathResult = xmlDoc.getElementsByTagName("organisationName")[0].childNodes[0].nodeValue+'|   '+xmlDoc.getElementsByTagName("effectiveFrom")[0].childNodes[0].nodeValue+'|   '+xmlDoc.getElementsByTagName("ASICNumber")[0].childNodes[0].nodeValue;
+          const xpathResult = xmlDoc.getElementsByTagName("organisationName")[0].childNodes[0].nodeValue+'|   '+xmlDoc.getElementsByTagName("score")[0].childNodes[0].nodeValue+'|   '+xmlDoc.getElementsByTagName("identifierValue")[0].childNodes[0].nodeValue;
+    const country = await xpathResult; 
+    return country;
+    //html `  <div>Country: ${country}</div>  `;  
+  }
 
   constructor() {
     super();
