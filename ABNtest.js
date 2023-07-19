@@ -19,7 +19,16 @@ export class abnControltest extends LitElement {
           type: 'string',
         	description: 'Insert ABN name',
           isValueField: true
-        },        
+        },  
+           Platform: {
+          title: 'Platform',
+          type: 'string',
+        	enum: ['AUS', 'NZ'],
+          showAsRadio: false,
+          verticalLayout: true,
+          defaultValue: 'AUS',
+          description: 'Choose your Platform (AUS now only is supported)'
+        },         
       },
     };
   }
