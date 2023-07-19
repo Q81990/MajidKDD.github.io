@@ -14,6 +14,11 @@ export class abnControltest extends LitElement {
       groupName: 'ABN NZBN',
       version: '1.2',
       properties: { 
+          APIKey: {
+          type: 'string',
+          title: 'APIKey',
+          description: 'Provide APIKey'
+        },    
         outcome: {
           title: 'abnName',
           type: 'string',
