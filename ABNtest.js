@@ -40,7 +40,7 @@ export class abnControltest extends LitElement {
 
    async load() {
  //   const abnvar = 'https://abr.business.gov.au/ABRXMLSearch/AbrXmlSearch.asmx/ABRSearchByABN?searchString='+this.abnName+'&includeHistoricalDetails=N&authenticationGuid=a1aceb80-e8bd-46f0-a5e1-e232c4a4c417';
- const abnvar =   'https://abr.business.gov.au/abrxmlsearch/AbrXmlSearch.asmx/ABRSearchByNameAdvancedSimpleProtocol2017?name='+this.abnName+'&legalName=&tradingName=&businessName=&activeABNsOnly=&NSW=&SA=&ACT=&postcode=&VIC=&WA=&NT=&QLD=&TAS=&authenticationGuid='+this.APIKey+'&searchWidth=&minimumScore=&maxSearchResults=';
+ const abnvar =   'https://abr.business.gov.au/abrxmlsearch/AbrXmlSearch.asmx/ABRSearchByNameAdvancedSimpleProtocol2017?name='+this.abnName+'&legalName=&tradingName=&businessName=&activeABNsOnly=&NSW=&SA=&ACT=&postcode=&VIC=&WA=&NT=&QLD=&TAS=&authenticationGuid=a1aceb80-e8bd-46f0-a5e1-e232c4a4c417&searchWidth=&minimumScore=&maxSearchResults=';
   const response = await fetch(abnvar);
     const myJson = await response.text();
     const countryPromise = Promise.resolve(myJson);
@@ -60,7 +60,7 @@ export class abnControltest extends LitElement {
 
   async connectedCallback() {
         super.connectedCallback();
-         this.abnName = await this.load();        
+         this.abnName = 'majid';//await this.load();        
     }
   
 
