@@ -60,7 +60,7 @@ export class abnControltest extends LitElement {
 
   async connectedCallback() {
         super.connectedCallback();
-         this.abnName = 'majid';//await this.load();        
+         this.abnName = await this.load();        
     }
   
 
