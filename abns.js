@@ -1,6 +1,6 @@
 import { css, html, LitElement, styleMap, until } from 'https://cdn.jsdelivr.net/gh/lit/dist@2/all/lit-all.min.js';
 
-export class abnControl extends LitElement {
+export class abnControlz extends LitElement {
 
   static properties = {
     videoUrl: { type: String },
@@ -59,5 +59,5 @@ export class abnControl extends LitElement {
   }
 }
 
-const elementName = 'abn-controls';
-customElements.define(elementName, abnControl);
+const elementName = 'abn-controlsz';
+customElements.define(elementName, abnControlz);
