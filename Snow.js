@@ -56,7 +56,7 @@ if (response.ok) {
     }
   
 render() {
- const dropdownOptions = this.videoUrl.map(number => html`<option value="${number}">${number}</option>`);
+ const dropdownOptions = this.incnum.map(number => html`<option value="${number}">${number}</option>`);
 
   return html`
     <label for="numberDropdown">Select a Number:</label>
