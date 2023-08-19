@@ -9,7 +9,7 @@ export class snowControl extends LitElement {
   // return a promise for contract changes.
   static getMetaConfig() {
     return {
-      controlName: 'Snow Control',
+      controlName: 'SNow Control',
       fallbackDisableSubmit: false,
       version: '1.2',
       properties: {
