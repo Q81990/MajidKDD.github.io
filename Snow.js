@@ -4,6 +4,7 @@ export class snowControl extends LitElement {
   
   static properties = {
     incnum: {type: String},
+    selectedOption: { type: String }
   };
   
   // return a promise for contract changes.
@@ -33,10 +34,10 @@ async load() {
 const snowvar =   'https://dev160993.service-now.com/api/now/table/incident?sysparm_fields=number&caller_id=majid';
   const response = await fetch(snowvar,{ method: "GET", headers: { "Authorization": "Basic YWRtaW46dmJKYWRASCpUNlc5"}});
 if (response.ok) {
-      const myJson = await response.text();
-    const countryPromise = Promise.resolve(myJson);
-     const country = await countryPromise; 
-    return country;
+         const myJson = await response.json();
+      const numbers = myJson.result.map(item => item.number);
+
+      return numbers;
       } else {
         return "Error";
     }
@@ -54,15 +55,26 @@ if (response.ok) {
         //await this.load();
     }
   
- render() {
-    return html`Snow Data:<p>"${this.incnum}" </p>`;
- }
-//  render() {
-//    return html`   <div>    <b>Country:</b>   </div>   `;
-//  }     
+render() {
+ const dropdownOptions = this.videoUrl.map(number => html`<option value="${number}">${number}</option>`);
 
+  return html`
+    <label for="numberDropdown">Select a Number:</label>
+    <select id="numberDropdown" @change="${this.handleDropdownChange}">
+      ${dropdownOptions}
+    </select>
+    <label for="selectedValue">Selected Value:</label>
+    <input id="selectedValue" type="text" .value="${this.selectedOption}" readonly>
+  `;
+     
+}
+  
+handleDropdownChange(event) {
+  const selectedValue = event.target.value;
+  this.selectedOption = selectedValue;
 }
 
+}
 // registering the web component
 const elementName = 'snow-control';
 customElements.define(elementName, snowControl);
