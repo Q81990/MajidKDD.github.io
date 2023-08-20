@@ -12,13 +12,9 @@ export class snowControl extends LitElement {
       padding: 20px;
       color: #fff;
     }
-.expandable_input{
-    min-width: 100px;
-    
-   border: 2px solid #ddd;
-   
-   margin: 1px 1px 2px 10px;
-}
+.expandable_input{   
+   border: 2px solid #ddd;   
+ }
   `;
 
   static properties = {
