@@ -33,6 +33,11 @@ export class snowControl extends LitElement {
           type: 'string',
           title: 'IncidentNumber',
           description: 'Type the Incident number here'
+        },
+                callerid: {
+          type: 'string',
+          title: 'CallerID',
+          description: 'Type the Caller ID here'
         }
       }
     };
