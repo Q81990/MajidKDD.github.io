@@ -70,11 +70,11 @@ export class snowControl extends LitElement {
     );
 
     return html`
-      <label for="numberDropdown">Select a Number:</label>
+      <label for="numberDropdown">Select a Task Number:</label>
       <select id="numberDropdown" @change="${this.handleDropdownChange}">
         ${dropdownOptions}
       </select>
-      <label for="selectedValue">Selected Value:</label>
+      <label for="selectedValue">Task Description:</label>
       <input
         id="selectedValue"
         type="text"
