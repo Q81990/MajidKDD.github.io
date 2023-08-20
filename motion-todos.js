@@ -1,184 +1,38 @@
-import {LitElement, html} from 'lit';
+import {LitElement, html, css} from 'lit';
 import {classMap} from 'lit/directives/class-map.js';
-import {repeat} from 'lit/directives/repeat.js';
-import {animate, fadeOut, flyBelow} from '@lit-labs/motion';
-import '@material/mwc-textfield';
-import '@material/mwc-button';
-import '@material/mwc-checkbox';
-import '@material/mwc-formfield';
+import {animate} from '@lit-labs/motion';
 
-const data = [
-  {id: 1, value: 'Go running.', completed: false},
-  {id: 2, value: 'Strength training', completed: true},
-  {id: 3, value: 'Walk with friends.', completed: false},
-  {id: 4, value: 'Feed the cats.', completed: true},
-  {id: 5, value: 'Shop for dinner.', completed: false},
-  {id: 6, value: 'Order clothes.', completed: false},
-  {id: 7, value: 'BBQ!', completed: false},
-];
-
-export class MotionTodos extends LitElement {
- static styles = css`
-    :host {
-      display: inline-block;
-      outline: none;
-      padding: 8px;
-      --mdc-theme-primary: #0069c0;
-      --mdc-theme-secondary: #1b5e20;
-      --mdc-typography-body2-font-size: 1.1rem;
-      --mdc-typography-body2-font-weight: 600;
-      --mdc-checkbox-unchecked-color: black;
-    }
-
-    mwc-textfield {
-      display: block;
-      margin-top: 16px;
-      --mdc-shape-small: 12px;
-    }
-
-    .controls {
-      display: flex;
-      padding: 8px 0;
-      justify-content: flex-end;
-    }
-
-    .lists {
-      display: flex;
-    }
-
-    .list {
-      flex: 1;
-    }
-
-    ul {
-      margin: 0;
-      padding: 0;
-      outline: none;
-    }
-
-    li {
-      will-change: transform;
-      position: relative;
-      background: #ffeb3b;
-      padding: 8px;
-      border-radius: 12px;
-      margin: 8px;
-      display: flex;
-      align-items: center;
-    }
-
-    li > button {
-      border: none;
-      background: none;
-      outline: none;
-      font-family: 'Material Icons';
-      font-size: 24px;
-      cursor: pointer;
-    }
-
-    li > mwc-formfield {
-      flex: 1;
-    }
-
-    .list.completed li {
-      background: #4caf50;
-    }
-    `;
-  
+export class MotionSlide extends LitElement {
   static properties = {
-    data: {type: Array},
+    slid: {type: Boolean},
   };
-  static styles = styles;
+  static styles = css`
+    .circle {
+      position: relative;
+      background: steelblue;
+      --box-size: 25vw;
+      height: var(--box-size);
+      width: var(--box-size);
+      border-radius: 50%;
+    }
 
-  static shadowRootOptions = {
-    mode: 'open',
-    delegatesFocus: true,
-  };
+    .slid {
+      left: calc(100% - var(--box-size));
+    }
+  `;
 
   constructor() {
     super();
-    this.data = data;
-  }
-
-  get textField() {
-    return this.renderRoot?.querySelector('mwc-textfield') ?? null;
-  }
-
-  addItem() {
-    if (!this.textField.value) {
-      return;
-    }
-    const nextId = this.data[this.data.length - 1].id + 1;
-    this.data = [
-      ...this.data,
-      {
-        id: nextId,
-        value: this.textField.value,
-        completed: false,
-      },
-    ];
-    this.textField.value = '';
-  }
-
-  removeItem(item) {
-    this.data = this.data.filter((i) => i != item);
-  }
-
-  updateItem(updatingItem, completed) {
-    this.data = this.data.map((item) => {
-      if (updatingItem === item) {
-        updatingItem.completed = completed;
-      }
-      return item;
-    });
+    this.slid = false;
   }
 
   render() {
-    const keyframeOptions = {
-      duration: 500,
-      fill: 'both',
-    };
-    const list = (completed = false) => html`<div
-      class="list ${classMap({completed})}"
-    >
-      <h3>${completed ? `Completed` : `Todos`}</h3>
-      <ul tabindex="-1">
-        ${repeat(
-          this.data.filter((item) =>
-            completed ? item.completed : !item.completed
-          ),
-          (item) => item.id,
-          (item) => html`<li
-            ${animate({
-              keyframeOptions,
-              in: flyBelow,
-              out: fadeOut,
-              stabilizeOut: true,
-              id: `${item.id}:${completed ? 'right' : 'left'}`,
-              inId: `${item.id}:${completed ? 'left' : 'right'}`,
-              skipInitial: true,
-            })}
-          >
-            <mwc-formfield label="${item.id}. ${item.value}"
-              ><mwc-checkbox
-                type="checkbox"
-                ?checked=${completed}
-                @change=${(e) => this.updateItem(item, e.target.checked)}
-              ></mwc-checkbox></mwc-formfield
-            ><button @click=${() => this.removeItem(item)}>
-              remove_circle_outline
-            </button>
-          </li>`
-        )}
-      </ul>
-    </div>`;
     return html`
-      <mwc-textfield outlined label="Enter a todo..."></mwc-textfield>
-      <div class="controls">
-        <mwc-button @click=${this.addItem} raised>Add Todo</mwc-button>
-      </div>
-      <div class="lists">${list()} ${list(true)}</div>
+      <p>
+        <button @click=${() => (this.slid = !this.slid)}>Slide</button>
+      </p>
+      <p class="circle ${classMap({slid: this.slid})}" ${animate()}></p>
     `;
   }
 }
-customElements.define('motion-todos', MotionTodos);
+customElements.define('motion-slide', MotionSlide);
