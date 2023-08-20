@@ -1,26 +1,25 @@
-import {css, html, LitElement, styleMap, until} from 'https://cdn.jsdelivr.net/gh/lit/dist@2/all/lit-all.min.js';
-// define the component
+import { css, html, LitElement } from 'https://cdn.jsdelivr.net/gh/lit/dist@2/all/lit-all.min.js';
+
 export class snowControl extends LitElement {
-  
- static styles = css`
-       .selcls {
+
+  static styles = css`
+    .selcls {
       background: #A0CFCF;
-  height: 75px;
-  width:250px;
-border: solid 8px #517B97; 
-  border-radius: 33px;
-  padding:20px;
-  color:#fff;  
-     }
+      height: 75px;
+      width: 250px;
+      border: solid 8px #517B97;
+      border-radius: 33px;
+      padding: 20px;
+      color: #fff;
+    }
   `;
-  
-  
+
   static properties = {
-    incnum: {type: String},
+    incnum: { type: Array }, // Changed type to Array
+    callerid: { type: String },
     selectedOption: { type: String }
   };
-  
-  // return a promise for contract changes.
+
   static getMetaConfig() {
     return {
       controlName: 'SNow Control',
@@ -30,65 +29,57 @@ border: solid 8px #517B97;
         incnum: {
           type: 'string',
           title: 'IncidentNumber',
-          // isValueField: true,
-          description: 'Type the Inncident number here'
+          description: 'Type the Incident number here'
         }
       }
     };
   }
-  
-  
-  renderCountry(country) {
-    this.incnum =  html `  <div>Country: ${country}</div>  `;
-  }
-  
-  
-async load() {
-const snowvar =   'https://dev160993.service-now.com/api/now/table/incident?sysparm_fields=number&caller_id=majid';
-  const response = await fetch(snowvar,{ method: "GET", headers: { "Authorization": "Basic YWRtaW46dmJKYWRASCpUNlc5"}});
-if (response.ok) {
-         const myJson = await response.json();
-      const numbers = myJson.result.map(item => item.number);
 
-      return numbers;
-      } else {
-        return "Error";
+  async load() {
+    const snowvar = 'https://dev160993.service-now.com/api/now/table/incident?sysparm_fields=number,short_description&caller_id=' + this.callerid;
+    const response = await fetch(snowvar, { method: "GET", headers: { "Authorization": "Basic YWRtaW46dmJKYWRASCpUNlc5" } });
+    if (response.ok) {
+      const myJson = await response.json();
+      const result = myJson.result; // Extract the "result" array
+      return result;
+    } else {
+      return [];
     }
-  
-  }  
- 
+  }
+
   constructor() {
     super();
-   
+    this.incnum = [];
   }
 
-      async connectedCallback() {
-        super.connectedCallback();
-         this.incnum = await this.load();
-        //await this.load();
-    }
-  
+  async connectedCallback() {
+    super.connectedCallback();
+    this.callerid = 'David.Miller';
+    this.incnum = await this.load();
+  }
+
   render() {
     const dropdownOptions = this.incnum.map(
-      (number) => html`<option class="selcls" value="${number}">${number}</option>`
+      (item) => html`
+        <option class="selcls" value="${item.short_description}">${item.number}</option>
+      `
     );
 
     return html`
-      <label for="numberDropdown">Select a Number:</label>
+      <label for="numberDropdown">Select a Task Number:</label>
       <select id="numberDropdown" @change="${this.handleDropdownChange}">
         ${dropdownOptions}
       </select>
-      <label for="selectedValue">Selected Value:</label>
+      <label for="selectedValue">Task Description:</label>
       <input id="selectedValue" type="text" .value="${this.selectedOption}" readonly />
     `;
   }
-  
-handleDropdownChange(event) {
-  const selectedValue = event.target.value;
-  this.selectedOption = selectedValue;
+
+  handleDropdownChange(event) {
+    const selectedValue = event.target.value;
+    this.selectedOption = selectedValue;
+  }
 }
 
-}
-// registering the web component
 const elementName = 'snow-control';
 customElements.define(elementName, snowControl);
