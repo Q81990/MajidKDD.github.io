@@ -12,10 +12,17 @@ export class snowControl extends LitElement {
       padding: 20px;
       color: #fff;
     }
+.expandable_input{
+    min-width: 100px;
+    
+   border: 2px solid #ddd;
+   
+   margin: 1px 1px 2px 10px;
+}
   `;
 
   static properties = {
-    incnum: { type: Array }, // Changed type to Array
+    incnum: { type: Array },
     callerid: { type: String },
     selectedOption: { type: String }
   };
@@ -40,7 +47,7 @@ export class snowControl extends LitElement {
     const response = await fetch(snowvar, { method: "GET", headers: { "Authorization": "Basic YWRtaW46dmJKYWRASCpUNlc5" } });
     if (response.ok) {
       const myJson = await response.json();
-      const result = myJson.result; // Extract the "result" array
+      const result = myJson.result;
       return result;
     } else {
       return [];
@@ -50,6 +57,7 @@ export class snowControl extends LitElement {
   constructor() {
     super();
     this.incnum = [];
+    this.selectedOption = "";
   }
 
   async connectedCallback() {
@@ -66,19 +74,39 @@ export class snowControl extends LitElement {
     );
 
     return html`
-      <label for="numberDropdown">Select a Task Number:</label>
+      <label for="numberDropdown">Select a Number:</label>
       <select id="numberDropdown" @change="${this.handleDropdownChange}">
         ${dropdownOptions}
       </select>
-      <label for="selectedValue">Task Description:</label>
-      <input id="selectedValue" type="text" .value="${this.selectedOption}" readonly />
+      <label for="selectedValue">Selected Value:</label>
+      <input
+        id="selectedValue"
+        type="text"
+        .value="${this.selectedOption}"
+        @input="${this.handleInput}"
+        class="expandable_input"
+      />
     `;
   }
 
   handleDropdownChange(event) {
     const selectedValue = event.target.value;
     this.selectedOption = selectedValue;
+    const selectedValueInput = this.shadowRoot.querySelector("#selectedValue");
+    selectedValueInput.style.width = (selectedValue.length + 1) + "ch";
   }
+
+  handleInput(event) {
+    const inputElement = event.target;
+    this.selectedOption = inputElement.value;
+    inputElement.style.width = (inputElement.value.length + 1) + "ch";
+    expandElementHeight(inputElement);
+  }
+}
+
+function expandElementHeight(element) {
+  element.style.height = "auto";
+  element.style.height = element.scrollHeight + "px";
 }
 
 const elementName = 'snow-control';
