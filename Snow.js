@@ -2,31 +2,16 @@ import {css, html, LitElement, styleMap, until} from 'https://cdn.jsdelivr.net/g
 // define the component
 export class snowControl extends LitElement {
   
-  static styles = css`
-    .selcls {
-      padding: 9px;
-      border: solid 5px #c9302c;
-      outline: 0;
-      background: -webkit-gradient(
-        linear,
-        left top,
-        left 25,
-        from(#ffffff),
-        color-stop(4%, #e78f8d),
-        to(#ffffff)
-      );
-      background: -moz-linear-gradient(
-        top,
-        #ffffff,
-        #e78f8d 1px,
-        #ffffff 25px
-      );
-      box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 8px;
-      -moz-box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 8px;
-      -webkit-box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 8px;
-      border-radius: 13px;
-      width: 150px;
-    }
+ static styles = css`
+       .selcls {
+      background: #A0CFCF;
+  height: 75px;
+  width:250px;
+border: solid 8px #517B97; 
+  border-radius: 33px;
+  padding:20px;
+  color:#fff;  
+     }
   `;
   
   
