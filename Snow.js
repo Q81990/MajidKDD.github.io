@@ -1,24 +1,24 @@
 import {css, html, LitElement, styleMap, until} from 'https://cdn.jsdelivr.net/gh/lit/dist@2/all/lit-all.min.js';
 // define the component
-export class snowControl extends LitElement {
+export class abnControl extends LitElement {
   
   static properties = {
-    incnum: {type: String},
-    selectedOption: { type: String }
+    videoUrl: {type: String},
+selectedOption: { type: String }
   };
   
   // return a promise for contract changes.
   static getMetaConfig() {
     return {
-      controlName: 'SNow Control',
+      controlName: 'abn Control',
       fallbackDisableSubmit: false,
       version: '1.2',
       properties: {
-        incnum: {
+        videoUrl: {
           type: 'string',
-          title: 'IncidentNumber',
+          title: 'abnURL',
           // isValueField: true,
-          description: 'Type the Inncident number here'
+          description: 'Type the YouTube URL here'
         }
       }
     };
@@ -26,23 +26,32 @@ export class snowControl extends LitElement {
   
   
   renderCountry(country) {
-    this.incnum =  html `  <div>Country: ${country}</div>  `;
+    this.videoUrl =  html `  <div>Country: ${country}</div>  `;
   }
   
   
-async load() {
-const snowvar =   'https://dev160993.service-now.com/api/now/table/incident?sysparm_fields=number&caller_id=majid';
-  const response = await fetch(snowvar,{ method: "GET", headers: { "Authorization": "Basic YWRtaW46dmJKYWRASCpUNlc5"}});
+  async load() {
+const apiUrl = 'https://dev160993.service-now.com/api/now/table/incident?sysparm_fields=number&caller_id=majid';
+const headers=
+    {"Content-Type": "application/json",      
+      "Authorization": "Basic YWRtaW46dmJKYWRASCpUNlc5"}
+      
+    
+
+
+const abnvar =   'https://dev160993.service-now.com/api/now/table/incident?sysparm_fields=number&caller_id=majid';
+ const response = await fetch(abnvar,{ method: "GET", headers: { "Authorization": "Basic YWRtaW46dmJKYWRASCpUNlc5"}});
 if (response.ok) {
-         const myJson = await response.json();
+        
+          const myJson = await response.json();
       const numbers = myJson.result.map(item => item.number);
 
       return numbers;
-      } else {
-        return "Error";
+    } else {
+        return "hellhhNOeeb";
     }
+  }
   
-  }  
  
   constructor() {
     super();
@@ -51,12 +60,12 @@ if (response.ok) {
 
       async connectedCallback() {
         super.connectedCallback();
-         this.incnum = await this.load();
+         this.videoUrl = await this.load();
         //await this.load();
     }
-  
-render() {
- const dropdownOptions = this.incnum.map(number => html`<option value="${number}">${number}</option>`);
+
+ render() {
+ const dropdownOptions = this.videoUrl.map(number => html`<option value="${number}">${number}</option>`);
 
   return html`
     <label for="numberDropdown">Select a Number:</label>
@@ -75,6 +84,7 @@ handleDropdownChange(event) {
 }
 
 }
+
 // registering the web component
-const elementName = 'snow-control';
-customElements.define(elementName, snowControl);
+const elementName = 'abn-control';
+customElements.define(elementName, abnControl);
