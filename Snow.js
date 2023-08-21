@@ -26,9 +26,10 @@ export class snowControl extends LitElement {
 
   static getMetaConfig() {
     return {
-      controlName: 'SNow Control',
+      controlName: 'SNow Controlz',
       fallbackDisableSubmit: false,
       version: '1.2',
+      groupName: 'ServiceNow1',
       properties: {
         incnum: {
           type: 'string',
@@ -40,13 +41,14 @@ export class snowControl extends LitElement {
           title: 'CallerID',
           description: 'Type the Caller ID here'
         },
-        selectedOption: {
+        selectedOptionval: {
           type: 'string',
           title: 'Selected Option',
           description: 'Outcome of the selected dropdown option',
           isValueField: true
-        }
-      }
+        },        
+      },
+      events: ["ntx-value-change"],
     };
   }
 
@@ -99,10 +101,19 @@ export class snowControl extends LitElement {
   }
 
   handleDropdownChange(event) {
+       const args = {
+        bubbles: true,
+        cancelable: false,
+        composed: true,
+        // value coming from input change event. 
+        detail:event.target.value,
+    };
     const selectedValue = event.target.value;
     this.selectedOption = selectedValue;
     const selectedValueInput = this.shadowRoot.querySelector("#selectedValue");
     selectedValueInput.style.width = (selectedValue.length + 1) + "ch";
+        const eventz = new CustomEvent('ntx-value-change', args);
+    this.dispatchEvent(eventz);
   }
 
  
