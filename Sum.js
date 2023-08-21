@@ -8,10 +8,10 @@ export class StarsPlugin extends LitElement {
 
   static getMetaConfig() {
     return {
-      controlName: 'Number Addition',
+      controlName: 'Number AdditionS',
       fallbackDisableSubmit: false,
-      groupName: 'Calculator',
-      version: '1.0',
+      groupName: 'Calculator2',
+      version: '1.20',
       properties: {
         num1: {
           title: 'Number 1',
@@ -31,7 +31,7 @@ export class StarsPlugin extends LitElement {
   }
 
   render() {
-    const sum = (this.num1 || 0) + (this.num2 || 0);
+    const sum = (this.num1) + (this.num2);
 
     return html`
       <input
