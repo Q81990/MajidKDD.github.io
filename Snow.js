@@ -103,8 +103,11 @@ export class snowControl extends LitElement {
 
   handleDropdownChange(event) {
     const selectedValue = event.target.value;
-    const selectedtext = event.target.textContent;
-    this.selectedOption = selectedValue;
+    
+    const selectedOptionElement = event.target.selectedOptions[0];
+    const selectedtext = selectedOptionElement.textContent;
+    
+    this.selectedOption = selectedtext; //selectedValue;
     const selectedValueInput = this.shadowRoot.querySelector("#selectedValue");
     selectedValueInput.style.width = (selectedValue.length + 1) + "ch";
 
