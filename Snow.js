@@ -26,10 +26,10 @@ export class snowControl extends LitElement {
 
   static getMetaConfig() {
     return {
-      controlName: 'SNow Controlz',
+      controlName: 'SNow ControlzSa',
       fallbackDisableSubmit: false,
       version: '1.2',
-      groupName: 'ServiceNow1',
+      groupName: 'ServiceNow122',
       properties: {
         incnum: {
           type: 'string',
@@ -101,20 +101,24 @@ export class snowControl extends LitElement {
   }
 
 handleDropdownChange(event) {
-  const selectedValue = event.target.value; // Get the selected option's value (incident number)
-  this.selectedOption = selectedValue; // Update the selectedOption property
+  const selectedOptionElement = event.target.selectedOptions[0]; // Get the selected option element
+  const selectedNumber = selectedOptionElement.value; // Get the value (incident number) of the selected option
+
+  this.selectedOption = selectedNumber; // Update the selectedOption property
   const selectedValueInput = this.shadowRoot.querySelector("#selectedValue");
-  selectedValueInput.style.width = (selectedValue.length + 1) + "ch";
+  selectedValueInput.style.width = (selectedNumber.length + 1) + "ch";
 
   const args = {
     bubbles: true,
     cancelable: false,
     composed: true,
-    detail: selectedValue, // Pass the selected incident number as the detail
+    detail: selectedNumber, // Pass the selected incident number as the detail
   };
+
   const eventz = new CustomEvent('ntx-value-change', args);
   this.dispatchEvent(eventz);
 }
+
 
  
   handleInput(event) {
