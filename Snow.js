@@ -102,7 +102,7 @@ export class snowControl extends LitElement {
 
 handleDropdownChange(event) {
   const selectedOptionElement = event.target.selectedOptions[0]; // Get the selected option element
-  const selectedNumber = selectedOptionElement.value; // Get the value (incident number) of the selected option
+  const selectedNumber = selectedOptionElement.textContent; // Get the value (incident number) of the selected option
 
   this.selectedOption = selectedNumber; // Update the selectedOption property
   const selectedValueInput = this.shadowRoot.querySelector("#selectedValue");
