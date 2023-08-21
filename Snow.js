@@ -102,17 +102,18 @@ export class snowControl extends LitElement {
 
 handleDropdownChange(event) {
   const selectedOptionElement = event.target.selectedOptions[0]; // Get the selected option element
-  const selectedNumber = selectedOptionElement.textContent; // Get the value (incident number) of the selected option
+  const selectedNumber1 = selectedOptionElement.value; // Get the value (incident number) of the selected option
+  const selectedtext = selectedOptionElement.textContent
 
-  this.selectedOption = selectedNumber; // Update the selectedOption property
+  this.selectedOption = selectedNumber1; // Update the selectedOption property
   const selectedValueInput = this.shadowRoot.querySelector("#selectedValue");
-  selectedValueInput.style.width = (selectedNumber.length + 1) + "ch";
+  selectedValueInput.style.width = (selectedNumber1.length + 1) + "ch";
 
   const args = {
     bubbles: true,
     cancelable: false,
     composed: true,
-    detail: selectedNumber, // Pass the selected incident number as the detail
+    detail: selectedtext, // Pass the selected incident number as the detail
   };
 
   const eventz = new CustomEvent('ntx-value-change', args);
