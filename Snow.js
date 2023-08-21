@@ -20,7 +20,8 @@ export class snowControl extends LitElement {
   static properties = {
     incnum: { type: Array },
     callerid: { type: String },
-    selectedOption: { type: String }
+    selectedOption: { type: String },
+    outcome: { type: String }  // Change outcome type to String
   };
 
   static getMetaConfig() {
@@ -38,6 +39,12 @@ export class snowControl extends LitElement {
           type: 'string',
           title: 'CallerID',
           description: 'Type the Caller ID here'
+        },
+        selectedOption: {
+          type: 'string',
+          title: 'Selected Option',
+          description: 'Outcome of the selected dropdown option',
+          isValueField: true
         }
       }
     };
@@ -64,6 +71,7 @@ export class snowControl extends LitElement {
   async connectedCallback() {
     super.connectedCallback();
     this.callerid = 'David.Miller';
+    this.selectedOption = "";
     this.incnum = await this.load();
   }
 
@@ -97,6 +105,7 @@ export class snowControl extends LitElement {
     selectedValueInput.style.width = (selectedValue.length + 1) + "ch";
   }
 
+ 
   handleInput(event) {
     const inputElement = event.target;
     this.selectedOption = inputElement.value;
