@@ -64,7 +64,7 @@ export class snowControl extends LitElement {
 
   async connectedCallback() {
     super.connectedCallback();
-    this.callerid = 'David.Miller';
+    //this.callerid = 'David.Miller';
     this.incnum = await this.load();
   }
 
