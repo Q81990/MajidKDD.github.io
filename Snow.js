@@ -91,7 +91,8 @@ export class snowControl extends LitElement {
       />
        <input
         id="optiontext"
-        type="text"       
+        type="text"
+        hidden 
       />
     `;
   }
