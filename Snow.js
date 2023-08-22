@@ -28,7 +28,7 @@ export class snowControl extends LitElement {
     return {
       controlName: 'SNow Controlzz33',
       fallbackDisableSubmit: false,
-      version: '1.2',
+      version: '1.3',
       properties: {
         incnum: {
           type: 'string',
@@ -85,8 +85,8 @@ export class snowControl extends LitElement {
       <input
         id="selectedValue"
         type="text"
-        .value="${this.selectedOption}"
-        @input="${this.handleInput}"
+        //.value="${this.selectedOption}"
+       // @input="${this.handleInput}"
         class="expandable_input"
       />
        <input
@@ -113,6 +113,7 @@ export class snowControl extends LitElement {
     this.selectedOption = selectedValue;
     const selectedValueInput = this.shadowRoot.querySelector("#selectedValue");
     selectedValueInput.style.width = (selectedValue.length + 1) + "ch";
+    selectedValueInput.value = selectedValue;
 
       const OptionElement = event.target.selectedOptions[0]; // Get the selected option element  
   const selectedtext = OptionElement.textContent   
