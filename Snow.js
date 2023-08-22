@@ -21,6 +21,7 @@ export class snowControl extends LitElement {
     incnum: { type: Array },
     callerid: { type: String },
     selectedOption: { type: String },
+    selectedSysId: { type: String },
     outcome: { type: String }  // Change outcome type to String
   };
 
@@ -46,7 +47,7 @@ export class snowControl extends LitElement {
   }
 
   async load() {
-    const snowvar = 'https://dev160993.service-now.com/api/now/table/incident?sysparm_fields=number,short_description&caller_id=' + this.callerid;
+    const snowvar = 'https://dev160993.service-now.com/api/now/table/incident?sysparm_fields=number,short_description,sys_id&caller_id=' + this.callerid;
     const response = await fetch(snowvar, { method: "GET", headers: { "Authorization": "Basic YWRtaW46dmJKYWRASCpUNlc5" } });
     if (response.ok) {
       const myJson = await response.json();
@@ -72,7 +73,9 @@ export class snowControl extends LitElement {
   render() {
     const dropdownOptions = this.incnum.map(
       (item) => html`
-        <option class="selcls" value="${item.short_description}">${item.number}</option>
+       // <option class="selcls" value="${item.short_description}">${item.number}</option>
+        <option class="selcls" value="${item.short_description}" data-sysid="${item.sys_id}">${item.number}</option>
+
       `
     );
 
@@ -92,6 +95,7 @@ export class snowControl extends LitElement {
        <input
         id="optiontext"
         type="text"
+        .value="${this.selectedSysId}"
         hidden 
       />
     `;
@@ -109,21 +113,24 @@ export class snowControl extends LitElement {
     this.dispatchEvent(event);
     console.log(e);
   }
-  handleDropdownChange(event) {
-    const selectedValue = event.target.value;
-    this.selectedOption = selectedValue;
-    const selectedValueInput = this.shadowRoot.querySelector("#selectedValue");
-    selectedValueInput.style.width = (selectedValue.length + 1) + "ch";
-    selectedValueInput.value = selectedValue;
 
-      const OptionElement = event.target.selectedOptions[0]; // Get the selected option element  
-  const selectedtext = OptionElement.textContent   
-  const optionTextInput = this.shadowRoot.querySelector("#optiontext");
-  optionTextInput.value = selectedtext;
-this._handleClick(selectedtext);
-      
+  handleDropdownChange(event) {
+    const selectedOption = event.target.value;
+    const selectedOptionInput = this.shadowRoot.querySelector("#selectedValue");
+    selectedOptionInput.style.width = (selectedOption.length + 1) + "ch";
+    selectedOptionInput.value = selectedOption;
+
+    const selectedOptionElement = event.target.selectedOptions[0];
+    const selectedSysId = selectedOptionElement.getAttribute("data-sysid");
+    this.selectedSysId = selectedSysId;
+    const optionTextInput = this.shadowRoot.querySelector("#optiontext");
+    optionTextInput.value = selectedSysId;
+    
+    this._handleClick(selectedOption);
   }
 
+
+  
   handleInput(event) {
     const inputElement = event.target;
     this.selectedOption = inputElement.value;
