@@ -72,7 +72,7 @@ export class snowControl extends LitElement {
 
   async connectedCallback() {
     super.connectedCallback();
-    this.callerid = 'David.Miller';
+    this.callerid = "";
     this.selectedOption = "";
     this.incnum = await this.load();
   }
@@ -111,8 +111,10 @@ export class snowControl extends LitElement {
     const selectedValueInput = this.shadowRoot.querySelector("#selectedValue");
     selectedValueInput.style.width = (selectedValue.length + 1) + "ch";
 
+  const OptionElement = event.target.selectedOptions[0]; // Get the selected option element  
+  const selectedtext = OptionElement.textContent   
   const optionTextInput = this.shadowRoot.querySelector("#optiontext");
-  optionTextInput.value = selectedValue;
+  optionTextInput.value = selectedtext;
   }
 
  
