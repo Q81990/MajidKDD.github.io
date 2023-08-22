@@ -26,10 +26,9 @@ export class snowControl extends LitElement {
 
   static getMetaConfig() {
     return {
-      controlName: 'SNow ControlzSa',
+      controlName: 'SNow Control',
       fallbackDisableSubmit: false,
       version: '1.2',
-      groupName: 'ServiceNow122',
       properties: {
         incnum: {
           type: 'string',
@@ -40,15 +39,8 @@ export class snowControl extends LitElement {
           type: 'string',
           title: 'CallerID',
           description: 'Type the Caller ID here'
-        },
-        selectedOptionval: {
-          type: 'string',
-          title: 'Selected Option',
-          description: 'Outcome of the selected dropdown option',
-          isValueField: true
-        },        
-      },
-      events: ["ntx-value-change"],
+        }
+      }
     };
   }
 
@@ -72,8 +64,7 @@ export class snowControl extends LitElement {
 
   async connectedCallback() {
     super.connectedCallback();
-    this.callerid = 'Majid';
-    this.selectedOption = "";
+    this.callerid = 'David.Miller';
     this.incnum = await this.load();
   }
 
@@ -97,27 +88,16 @@ export class snowControl extends LitElement {
         @input="${this.handleInput}"
         class="expandable_input"
       />
-      <input
-        id="optiontext"
-        type="text"       
-      />
     `;
   }
 
-
-   handleDropdownChange(event) {
+  handleDropdownChange(event) {
     const selectedValue = event.target.value;
     this.selectedOption = selectedValue;
     const selectedValueInput = this.shadowRoot.querySelector("#selectedValue");
     selectedValueInput.style.width = (selectedValue.length + 1) + "ch";
-
-  const OptionElement = event.target.selectedOptions[0]; // Get the selected option element  
-  const selectedtext = OptionElement.textContent   
-  const optionTextInput = this.shadowRoot.querySelector("#optiontext");
-  optionTextInput.value = selectedtext;
   }
 
- 
   handleInput(event) {
     const inputElement = event.target;
     this.selectedOption = inputElement.value;
