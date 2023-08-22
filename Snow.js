@@ -26,7 +26,7 @@ export class snowControl extends LitElement {
 
   static getMetaConfig() {
     return {
-      controlName: 'SNow Control',
+      controlName: 'SNow Controlzz33',
       fallbackDisableSubmit: false,
       version: '1.2',
       properties: {
