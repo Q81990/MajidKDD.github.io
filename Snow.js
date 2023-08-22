@@ -53,7 +53,7 @@ export class snowControl extends LitElement {
   }
 
   async load() {
-    const snowvar = 'https://dev160993.service-now.com/api/now/table/incident?sysparm_fields=number,short_description&caller_id=' + ${this.videosrc};
+    const snowvar = 'https://dev160993.service-now.com/api/now/table/incident?sysparm_fields=number,short_description&caller_id=' + ${this.callerid};
     const response = await fetch(snowvar, { method: "GET", headers: { "Authorization": "Basic YWRtaW46dmJKYWRASCpUNlc5" } });
     if (response.ok) {
       const myJson = await response.json();
