@@ -110,6 +110,9 @@ export class snowControl extends LitElement {
     this.selectedOption = selectedValue;
     const selectedValueInput = this.shadowRoot.querySelector("#selectedValue");
     selectedValueInput.style.width = (selectedValue.length + 1) + "ch";
+
+  const optionTextInput = this.shadowRoot.querySelector("#optiontext");
+  optionTextInput.value = selectedValue;
   }
 
  
