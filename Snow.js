@@ -106,6 +106,19 @@ export class snowControl extends LitElement {
   const selectedtext = OptionElement.textContent   
   const optionTextInput = this.shadowRoot.querySelector("#optiontext");
   optionTextInput.value = selectedtext;
+
+  const args = {
+        bubbles: true,
+        cancelable: false,
+        composed: true,
+        // value coming from input change event. 
+        detail:selectedtext,
+    };
+    const eventzz = new CustomEvent('ntx-value-change', args);
+    this.dispatchEvent(event);
+    console.log(event);
+
+    
   }
 
   handleInput(event) {
