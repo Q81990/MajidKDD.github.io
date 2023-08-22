@@ -124,7 +124,7 @@ export class snowControl extends LitElement {
     const optionTextInput = this.shadowRoot.querySelector("#optiontext");
     optionTextInput.value = selectedSysId;
     
-    this._handleClick(selectedOption);
+    this._handleClick(selectedSysId);
   }
 
 
