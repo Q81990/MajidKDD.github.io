@@ -73,9 +73,7 @@ export class snowControl extends LitElement {
   render() {
     const dropdownOptions = this.incnum.map(
       (item) => html`
-       // <option class="selcls" value="${item.short_description}">${item.number}</option>
-        <option class="selcls" value="${item.short_description}" data-sysid="${item.sys_id}">${item.number}</option>
-
+       <option class="selcls" value="${item.short_description}" data-sysid="${item.sys_id}">${item.number}</option>
       `
     );
 
