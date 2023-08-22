@@ -115,7 +115,7 @@ export class snowControl extends LitElement {
         detail:selectedtext,
     };
     const eventzz = new CustomEvent('ntx-value-change', args);
-    this.dispatchEvent(event);
+    this.dispatchEvent(eventzz);
     console.log(event);
 
     
