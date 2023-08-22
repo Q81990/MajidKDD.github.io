@@ -97,6 +97,10 @@ export class snowControl extends LitElement {
         @input="${this.handleInput}"
         class="expandable_input"
       />
+      <input
+        id="optiontext"
+        type="text"       
+      />
     `;
   }
 
