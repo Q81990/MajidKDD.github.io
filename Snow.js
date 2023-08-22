@@ -96,6 +96,18 @@ export class snowControl extends LitElement {
     `;
   }
 
+  _handleClick(e) {
+   const args = {
+        bubbles: true,
+        cancelable: false,
+        composed: true,
+        // value coming from input change event. 
+        detail:e,
+    };
+    const event = new CustomEvent('ntx-value-change', args);
+    this.dispatchEvent(event);
+    console.log(e);
+  }
   handleDropdownChange(event) {
     const selectedValue = event.target.value;
     this.selectedOption = selectedValue;
@@ -106,19 +118,8 @@ export class snowControl extends LitElement {
   const selectedtext = OptionElement.textContent   
   const optionTextInput = this.shadowRoot.querySelector("#optiontext");
   optionTextInput.value = selectedtext;
-
-  const args = {
-        bubbles: true,
-        cancelable: false,
-        composed: true,
-        // value coming from input change event. 
-        detail:selectedtext,
-    };
-    const eventzz = new CustomEvent('ntx-value-change', args);
-    this.dispatchEvent(eventzz);
-    console.log(event);
-
-    
+this._handleClick(selectedtext);
+      
   }
 
   handleInput(event) {
