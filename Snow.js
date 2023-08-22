@@ -88,6 +88,10 @@ export class snowControl extends LitElement {
         @input="${this.handleInput}"
         class="expandable_input"
       />
+       <input
+        id="optiontext"
+        type="text"       
+      />
     `;
   }
 
@@ -96,6 +100,11 @@ export class snowControl extends LitElement {
     this.selectedOption = selectedValue;
     const selectedValueInput = this.shadowRoot.querySelector("#selectedValue");
     selectedValueInput.style.width = (selectedValue.length + 1) + "ch";
+
+      const OptionElement = event.target.selectedOptions[0]; // Get the selected option element  
+  const selectedtext = OptionElement.textContent   
+  const optionTextInput = this.shadowRoot.querySelector("#optiontext");
+  optionTextInput.value = selectedtext;
   }
 
   handleInput(event) {
