@@ -39,8 +39,9 @@ export class snowControl extends LitElement {
           type: 'string',
           title: 'CallerID',
           description: 'Type the Caller ID here'
-        }
-      }
+        },        
+      },
+      events: ["ntx-value-change"],
     };
   }
 
