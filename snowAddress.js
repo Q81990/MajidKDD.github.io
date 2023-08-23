@@ -1,6 +1,6 @@
 import { css, html, LitElement } from 'https://cdn.jsdelivr.net/gh/lit/dist@2/all/lit-all.min.js';
 
-export class snowAddress extends LitElement {
+export class snowAddressz extends LitElement {
 
   static styles = css`
     .selcls {
@@ -108,5 +108,5 @@ _handleClick(address);
 }
 
 
-const elementName = 'snow-majid';
-customElements.define(elementName, snowAddress);
+const elementName = 'snow-adrz';
+customElements.define(elementName, snowAddressz);
