@@ -18,7 +18,7 @@ export class snowAddress extends LitElement {
   `;
 
   static properties = {
-    incnum: { type: Array },
+    incnum: { type: String },
     callerid: { type: String },
     selectedOption: { type: String },
     selectedSysId: { type: String },
@@ -52,9 +52,7 @@ selectedSysId: {
   }
 
   async load() {
-    const snowvar = 'https://dev160993.service-now.com/api/now/table/incident/'+this.selectedSysId+'?sysparm_fields='+this.callerid;
-    
-    const response = await fetch(snowvar, { method: "GET", headers: { "Authorization": "Basic YWRtaW46dmJKYWRASCpUNlc5" } });
+const snowvar = 'https://dev160993.service-now.com/api/now/table/incident?sysparm_fields='+this.callerid+'&sys_id='+this.selectedSysId;   const response = await fetch(snowvar, { method: "GET", headers: { "Authorization": "Basic YWRtaW46dmJKYWRASCpUNlc5" } });
     if (response.ok) {
       const myJson = await response.json();
       const result = myJson.result;
@@ -77,19 +75,18 @@ selectedSysId: {
   }
 
   render() {
-  if (!this.incidentData) {
+  if (!this.incnum) {
     return html``;
   }
 
-  const address = this.incidentData.result.u_addressaddress;
-
+  const address = this.incnum[0].u_addressaddress;
+_handleClick(address);
   return html`
     <label for="addressTextBox">Address:</label>
     <input
       id="addressTextBox"
       type="text"
-      .value="${address}"
-      class="expandable_input"
+      .value="${address}"     
     />
   `;
 }
@@ -107,35 +104,9 @@ selectedSysId: {
     console.log(e);
   }
 
-  handleDropdownChange(event) {
-    const selectedOption = event.target.value;
-    const selectedOptionInput = this.shadowRoot.querySelector("#selectedValue");
-    selectedOptionInput.style.width = (selectedOption.length + 1) + "ch";
-    selectedOptionInput.value = selectedOption;
 
-    const selectedOptionElement = event.target.selectedOptions[0];
-    const selectedSysId = selectedOptionElement.getAttribute("data-sysid");
-    this.selectedSysId = selectedSysId;
-    const optionTextInput = this.shadowRoot.querySelector("#optiontext");
-    optionTextInput.value = selectedSysId;
-    
-    this._handleClick(selectedSysId);
-  }
-
-
-  
-  handleInput(event) {
-    const inputElement = event.target;
-    this.selectedOption = inputElement.value;
-    inputElement.style.width = (inputElement.value.length + 1) + "ch";
-    expandElementHeight(inputElement);
-  }
 }
 
-function expandElementHeight(element) {
-  element.style.height = "auto";
-  element.style.height = element.scrollHeight + "px";
-}
 
-const elementName = 'snow-Address';
+const elementName = 'snow-majid';
 customElements.define(elementName, snowAddress);
