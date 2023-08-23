@@ -1,22 +1,6 @@
 import { css, html, LitElement } from 'https://cdn.jsdelivr.net/gh/lit/dist@2/all/lit-all.min.js';
 
-export class snowControl extends LitElement {
-
-  static styles = css`
-    .selcls {
-      background: #A0CFCF;
-      height: 75px;
-      width: 250px;
-      border: solid 8px #517B97;
-      border-radius: 33px;
-      padding: 20px;
-      color: #fff;
-    }
-.expandable_input{   
-   border: 2px solid #ddd;   
- }
-  `;
-
+export class snowSrviceControl extends LitElement {
   static properties = {
      incidentData: { type: Object },
     incnum: { type: Array },
@@ -116,35 +100,8 @@ export class snowControl extends LitElement {
     console.log(e);
   }
 
-  handleDropdownChange(event) {
-    const selectedOption = event.target.value;
-    const selectedOptionInput = this.shadowRoot.querySelector("#selectedValue");
-    selectedOptionInput.style.width = (selectedOption.length + 1) + "ch";
-    selectedOptionInput.value = selectedOption;
 
-    const selectedOptionElement = event.target.selectedOptions[0];
-    const selectedSysId = selectedOptionElement.getAttribute("data-sysid");
-    this.selectedSysId = selectedSysId;
-    const optionTextInput = this.shadowRoot.querySelector("#optiontext");
-    optionTextInput.value = selectedSysId;
-    
-    this._handleClick(selectedSysId);
-  }
-
-
-  
-  handleInput(event) {
-    const inputElement = event.target;
-    this.selectedOption = inputElement.value;
-    inputElement.style.width = (inputElement.value.length + 1) + "ch";
-    expandElementHeight(inputElement);
-  }
 }
 
-function expandElementHeight(element) {
-  element.style.height = "auto";
-  element.style.height = element.scrollHeight + "px";
-}
-
-const elementName = 'snow-control';
-customElements.define(elementName, snowControl);
+const elementName = 'snowsrvc-control';
+customElements.define(elementName, snowSrviceControl);
