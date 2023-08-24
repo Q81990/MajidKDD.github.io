@@ -1,5 +1,4 @@
 import { html,LitElement,css} from 'https://cdn.jsdelivr.net/gh/lit/dist@2/all/lit-all.min.js';
-import { NintexPlugin } from '../../lib/nintex-plugin';
 // define the component
 export class StarzPluginz extends LitElement {
   static properties = {
@@ -54,6 +53,10 @@ export class StarzPluginz extends LitElement {
       groupName: 'Ratingzz',
       version: '1.2',
       properties: { 
+              inputValue: {
+              type: 'integer',
+              title: "Input Value"
+            },
         outcome: {
           title: 'Rating',
           type: 'integer',
@@ -77,7 +80,23 @@ _handleClick(e) {
     this.dispatchEvent(event);
     console.log(e);
   }
- 
+  constructor() {
+    super();
+          if (this.inputValue) {
+          this.outcome = this.inputValue;
+        
+  // Check the radio input based on the inputValue
+      const radioId = `star${this.inputValue}`;
+      const radioInput = this.shadowRoot.getElementById(radioId);
+      if (radioInput) {
+        radioInput.checked = true;
+      }
+    } else {
+          this.outcome = 0;
+        }
+  }
+
+  
   render() {
     return html`
      <div class="rate">
