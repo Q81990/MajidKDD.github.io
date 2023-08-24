@@ -50,7 +50,7 @@ export class StarzPluginz extends LitElement {
   `;
 static getMetaConfig(){
     return {
-      controlName: 'Star Ratingzz',
+      controlName: 'Star Ratingzzs',
       fallbackDisableSubmit: false,
       groupName: 'Ratingzz',
       version: '1.2',
