@@ -2,22 +2,7 @@ import { css, html, LitElement } from 'https://cdn.jsdelivr.net/gh/lit/dist@2/al
 
 export class snowAddressz extends LitElement {
 
-  static styles = css`
-    .selcls {
-      background: #A0CFCF;
-      height: 75px;
-      width: 250px;
-      border: solid 8px #517B97;
-      border-radius: 33px;
-      padding: 20px;
-      color: #fff;
-    }
-.expandable_input{   
-   border: 2px solid #ddd;   
- }
-  `;
-
-  static properties = {
+   static properties = {
     incnum: { type: String },
     callerid: { type: String },
     selectedOption: { type: String },
@@ -52,7 +37,8 @@ selectedSysId: {
   }
 
   async load() {
-const snowvar = 'https://dev160993.service-now.com/api/now/table/incident?sysparm_fields='+this.callerid+'&sys_id='+this.selectedSysId;   const response = await fetch(snowvar, { method: "GET", headers: { "Authorization": "Basic YWRtaW46dmJKYWRASCpUNlc5" } });
+const snowvar = 'https://dev160993.service-now.com/api/now/table/incident?sysparm_fields='+this.callerid+'&sys_id='+this.selectedSysId;   
+const response = await fetch(snowvar, { method: "GET", headers: { "Authorization": "Basic YWRtaW46dmJKYWRASCpUNlc5" } });
     if (response.ok) {
       const myJson = await response.json();
       const result = myJson.result;
@@ -80,7 +66,6 @@ const snowvar = 'https://dev160993.service-now.com/api/now/table/incident?syspar
   }
 
   const address = this.incnum[0].u_addressaddress;
-_handleClick(address);
   return html`
     <label for="addressTextBox">Address:</label>
     <input
@@ -106,7 +91,5 @@ _handleClick(address);
 
 
 }
-
-
 const elementName = 'snow-adrz';
 customElements.define(elementName, snowAddressz);
