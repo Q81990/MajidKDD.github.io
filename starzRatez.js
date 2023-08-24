@@ -47,7 +47,7 @@ export class StarzPluginz extends LitElement {
         }
         /* Modified from: https://github.com/mukulkant/Star-rating-using-pure-css */        
   `;
-static getMetaConfig(){
+    static getMetaConfig():Promise<NintexPlugin> | NintexPlugin {
     return {
       controlName: 'Star Ratingzzs',
       fallbackDisableSubmit: false,
