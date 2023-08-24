@@ -67,6 +67,13 @@ export class StarzPluginz extends LitElement {
       events: ["ntx-value-change"],
     };
   }
+
+
+  updated(changedProperties) {
+    if (changedProperties.has('inputValue')) {
+      this.requestUpdate();
+    }
+  }
   
 _handleClick(e) {
    const args = {
