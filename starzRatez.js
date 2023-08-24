@@ -82,38 +82,26 @@ _handleClick(e) {
   }
   constructor() {
     super();
-          if (this.inputValue) {
-          this.outcome = this.inputValue;
-        
-  // Check the radio input based on the inputValue
-      const radioId = `star${this.inputValue}`;
-      const radioInput = this.shadowRoot.getElementById(radioId);
-      if (radioInput) {
-        radioInput.checked = true;
-      }
-    } else {
-          this.outcome = 0;
-        }
   }
 
-  
   render() {
-    return html`
-     <div class="rate">
-    
-    <input type="radio" id="star5" name="rate" value="5" @click=${() => this._handleClick(5)} />
-    <label for="star5" title="text">5 stars</label>
-    <input type="radio" id="star4" name="rate" value="4" @click=${() => this._handleClick(4)}/>
-    <label for="star4" title="text">4 stars</label>
-    <input type="radio" id="star3" name="rate" value="3" @click=${() => this._handleClick(3)}/>
-    <label for="star3" title="text">3 stars</label>
-    <input type="radio" id="star2" name="rate" value="2" @click=${() => this._handleClick(2)}/>
-    <label for="star2" title="text">2 stars</label>
-    <input type="radio" id="star1" name="rate" value="1" @click=${() => this._handleClick(1)}/>
-    <label for="star1" title="text">1 star</label>
-  </div>
-    `;
-  }
+  const inputValue = this.inputValue || 0; // Use inputValue from properties or default to 0
+  return html`
+    <div class="rate">
+      <input type="radio" id="star5" name="rate" value="5" ?checked=${inputValue === 5} @click=${() => this._handleClick(5)} />
+      <label for="star5" title="text">5 stars</label>
+      <input type="radio" id="star4" name="rate" value="4" ?checked=${inputValue === 4} @click=${() => this._handleClick(4)}/>
+      <label for="star4" title="text">4 stars</label>
+      <input type="radio" id="star3" name="rate" value="3" ?checked=${inputValue === 3} @click=${() => this._handleClick(3)}/>
+      <label for="star3" title="text">3 stars</label>
+      <input type="radio" id="star2" name="rate" value="2" ?checked=${inputValue === 2} @click=${() => this._handleClick(2)}/>
+      <label for="star2" title="text">2 stars</label>
+      <input type="radio" id="star1" name="rate" value="1" ?checked=${inputValue === 1} @click=${() => this._handleClick(1)}/>
+      <label for="star1" title="text">1 star</label>
+    </div>
+  `;
+}
+
 }
 const elementName = 'starz-pluginz';
 customElements.define(elementName, StarzPluginz);
