@@ -1,4 +1,5 @@
 import { html,LitElement,css} from 'https://cdn.jsdelivr.net/gh/lit/dist@2/all/lit-all.min.js';
+import { NintexPlugin } from '../../lib/nintex-plugin';
 // define the component
 export class StarzPluginz extends LitElement {
   static properties = {
