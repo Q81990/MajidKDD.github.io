@@ -124,5 +124,5 @@ render() {
 }
 
 // registering the web component
-const elementName = 'RS-plugin1';
+const elementName = 'DevzRS-plugin1';
 customElements.define(elementName, RSPlugIn);
