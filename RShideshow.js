@@ -47,30 +47,35 @@ export class RSPlugIn extends LitElement {
   findButtonsWithStyleControlId() {
     const buttons = document.querySelectorAll('button[data-e2e^="btn-new-row"]');
     const buttonsWithStyleControlId = [];
+    const buttonsWithdataE2E = = [];
 
     buttons.forEach((button) => {
+      const dataE2E = button.getAttribute('data-e2e');
       const styleControlId = button.getAttribute('stylecontrolid');
-      if (styleControlId) {
-        buttonsWithStyleControlId.push(button);
+      if (dataE2E  && dataE2E.includes(this.videosrc)) {
+        buttonsWithdataE2E.push(button);
       }
     });
 
-    return buttonsWithStyleControlId;
+    return buttonsWithdataE2E;
   }
 
-  renderButtons() {
-    const buttons = this.findButtonsWithStyleControlId();
 
-    buttons.forEach((button) => {
-      if (this.hide) {
-        button.style.display = 'none'; // Hide the button if hide is true
-      } else {
-        button.style.display = ''; // Show the button if hide is false
-      }
-    });
+renderButtons() {
+  const buttons = this.findButtonsWithStyleControlId();
 
-    return buttons;
-  }
+  buttons.forEach((button) => {
+    if (this.hide) {
+      button.style.setProperty('display', 'none', 'important'); // Hide the button with !important
+    } else {
+      button.style.setProperty('display', '', 'important'); // Show the button with !important
+    }
+  });
+
+  return buttons;
+}
+
+ 
   constructor() {
     super();
     this.videosrc = this.collectStyleControlIds();
