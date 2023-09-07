@@ -46,12 +46,12 @@ export class RSPlugIn extends LitElement {
   }
   findButtonsWithStyleControlId() {
     const buttons = document.querySelectorAll('button[data-e2e^="btn-new-row"]');
-    const buttonsWithStyleControlId = [];
+   // const buttonsWithStyleControlId = [];
     const buttonsWithdataE2E = = [];
 
     buttons.forEach((button) => {
       const dataE2E = button.getAttribute('data-e2e');
-      const styleControlId = button.getAttribute('stylecontrolid');
+     // const styleControlId = button.getAttribute('stylecontrolid');
       if (dataE2E  && dataE2E.includes(this.videosrc)) {
         buttonsWithdataE2E.push(button);
       }
@@ -75,6 +75,7 @@ renderButtons() {
   return buttons;
 }
 
+
  
   constructor() {
     super();
@@ -82,13 +83,23 @@ renderButtons() {
 this.hide = false;
   }
 
-render() {
-    return html`
-      <input type="text" value="${this.videosrc}">
-      ${this.renderButtons()}
-    `;
-  }
 
+
+render() {
+  const buttons = this.findButtonsWithStyleControlId();
+
+  // Convert the buttons array into a string
+  const buttonsAsString = buttons.join(', ');
+
+  return html`
+      <input type="text" value="${this.videosrc}">  
+    <input type="text" value="${buttonsAsString}">
+    ${this.renderButtons()}
+  `;
+}
+
+
+  
 }
   
 // registering the web component
