@@ -1,4 +1,4 @@
-//ver 1
+//ver 2
 import { html,LitElement} from 'https://cdn.jsdelivr.net/gh/lit/dist@2/all/lit-all.min.js';
 
 // define the component
@@ -18,13 +18,13 @@ export class RSPlugIn extends LitElement {
         videosrc: {
           type: 'string',
           enum: [true, false], // Enum values for hide property
-          title: 'Media Source',
-          description: 'Imported YouTube embedded link is needed (e.g., https://www.youtube.com/embed/vpKcM4MxPzc)',
+          title: 'ctrl id',
+          description: 'RS ctrl id',
         },
         hide: {
           type: 'boolean',
-          title: 'Hide Video',
-          description: 'Set to true to hide the video, false to display it.',
+          title: 'Hide ctrl',
+          description: 'Set to true to hide the ctrl, false to display it.',
         },
       },
     };
@@ -56,7 +56,7 @@ export class RSPlugIn extends LitElement {
       }
     });
 
-    return buttonsWithStyleControlId;
+    return buttons; //buttonsWithStyleControlId;
   }
 
   renderButtons() {
@@ -80,7 +80,8 @@ this.hide = false;
 
 render() {
     return html`
-      <input type="text" value="${this.videosrc}">
+      <input type="text" style="width: 840px; value="${this.videosrc}">
+      <input type="text" style="width: 840px; value="${this.findButtonsWithStyleControlId()}">
       ${this.renderButtons()}
     `;
   }
