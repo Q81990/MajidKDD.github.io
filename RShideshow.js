@@ -1,4 +1,4 @@
-//ver 3
+//ver 1 - 1
 import { html,LitElement} from 'https://cdn.jsdelivr.net/gh/lit/dist@2/all/lit-all.min.js';
 
 // define the component
@@ -18,7 +18,7 @@ export class RSPlugIn extends LitElement {
         videosrc: {
           type: 'string',
           enum: [true, false], // Enum values for hide property
-          title: 'ctrl id',
+          title: 'RS show',
           description: 'RS ctrl id',
         },
         hide: {
@@ -56,7 +56,7 @@ export class RSPlugIn extends LitElement {
       }
     });
 
-    return buttons; //buttonsWithStyleControlId;
+    return buttonsWithStyleControlId;
   }
 
   renderButtons() {
@@ -80,7 +80,7 @@ this.hide = false;
 
 render() {
     return html`
-      <input type="text" style="width: 840px; value="${this.videosrc}">      
+      <input type="text" value="${this.videosrc}">
       ${this.renderButtons()}
     `;
   }
