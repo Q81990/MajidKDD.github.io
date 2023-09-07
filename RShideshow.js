@@ -1,4 +1,4 @@
-//ver 1 - 1
+//ver 1
 import { html,LitElement} from 'https://cdn.jsdelivr.net/gh/lit/dist@2/all/lit-all.min.js';
 
 // define the component
@@ -18,13 +18,13 @@ export class RSPlugIn extends LitElement {
         videosrc: {
           type: 'string',
           enum: [true, false], // Enum values for hide property
-          title: 'RS show',
-          description: 'RS ctrl id',
+          title: 'Media Source',
+          description: 'Imported YouTube embedded link is needed (e.g., https://www.youtube.com/embed/vpKcM4MxPzc)',
         },
         hide: {
           type: 'boolean',
-          title: 'Hide ctrl',
-          description: 'Set to true to hide the ctrl, false to display it.',
+          title: 'Hide Video',
+          description: 'Set to true to hide the video, false to display it.',
         },
       },
     };
