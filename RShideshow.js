@@ -1,3 +1,4 @@
+//ver 1
 import { html,LitElement} from 'https://cdn.jsdelivr.net/gh/lit/dist@2/all/lit-all.min.js';
 
 // define the component
@@ -46,60 +47,44 @@ export class RSPlugIn extends LitElement {
   }
   findButtonsWithStyleControlId() {
     const buttons = document.querySelectorAll('button[data-e2e^="btn-new-row"]');
-   // const buttonsWithStyleControlId = [];
-    const buttonsWithdataE2E = = [];
+    const buttonsWithStyleControlId = [];
 
     buttons.forEach((button) => {
-      const dataE2E = button.getAttribute('data-e2e');
-     // const styleControlId = button.getAttribute('stylecontrolid');
-      if (dataE2E  && dataE2E.includes(this.videosrc)) {
-        buttonsWithdataE2E.push(button);
+      const styleControlId = button.getAttribute('stylecontrolid');
+      if (styleControlId) {
+        buttonsWithStyleControlId.push(button);
       }
     });
 
-    return buttonsWithdataE2E;
+    return buttonsWithStyleControlId;
   }
 
+  renderButtons() {
+    const buttons = this.findButtonsWithStyleControlId();
 
-renderButtons() {
-  const buttons = this.findButtonsWithStyleControlId();
+    buttons.forEach((button) => {
+      if (this.hide) {
+        button.style.display = 'none'; // Hide the button if hide is true
+      } else {
+        button.style.display = ''; // Show the button if hide is false
+      }
+    });
 
-  buttons.forEach((button) => {
-    if (this.hide) {
-      button.style.setProperty('display', 'none', 'important'); // Hide the button with !important
-    } else {
-      button.style.setProperty('display', '', 'important'); // Show the button with !important
-    }
-  });
-
-  return buttons;
-}
-
-
- 
+    return buttons;
+  }
   constructor() {
     super();
     this.videosrc = this.collectStyleControlIds();
 this.hide = false;
   }
 
-
-
 render() {
-  const buttons = this.findButtonsWithStyleControlId();
+    return html`
+      <input type="text" value="${this.videosrc}">
+      ${this.renderButtons()}
+    `;
+  }
 
-  // Convert the buttons array into a string
-  const buttonsAsString = buttons.join(', ');
-
-  return html`
-      <input type="text" value="${this.videosrc}">  
-    <input type="text" value="${buttonsAsString}">
-    ${this.renderButtons()}
-  `;
-}
-
-
-  
 }
   
 // registering the web component
