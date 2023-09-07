@@ -1,4 +1,4 @@
-//ver 1.2
+//ver 1.3
 import { html,LitElement} from 'https://cdn.jsdelivr.net/gh/lit/dist@2/all/lit-all.min.js';
 
 // define the component
@@ -32,8 +32,19 @@ export class RSPlugIn extends LitElement {
 
   
     ShowHide() {
-    alert('Hello');
+  // Get the value of the input text with id "rsctrlid"
+  const inputTextValue = document.querySelector('#rsctrlid').value;
+
+  // Construct the data-e2e attribute selector
+  const buttonSelector = `button[data-e2e="btn-new-row_${inputTextValue}"]`;
+
+  // Find the button using the constructed selector
+  const buttonToHide = document.querySelector(buttonSelector);
+
+  if (buttonToHide) {
+    buttonToHide.style.display = 'none';
   }
+}
   collectStyleControlIds() {
     const divsWithClass = document.querySelectorAll('.nx-repeating-section-container');
     const styleControlIds = [];
@@ -82,7 +93,7 @@ this.hide = false;
 
 render() {
     return html`
-      <input type="text" value="${this.videosrc}">
+      <input type="text" id="rsctrlid" value="${this.videosrc}">
       <button @click="${this.ShowHide}">Click Me</button>      
     `;
   }
