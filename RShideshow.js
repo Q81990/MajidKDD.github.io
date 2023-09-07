@@ -1,4 +1,4 @@
-//ver 2
+//ver 3
 import { html,LitElement} from 'https://cdn.jsdelivr.net/gh/lit/dist@2/all/lit-all.min.js';
 
 // define the component
@@ -80,8 +80,7 @@ this.hide = false;
 
 render() {
     return html`
-      <input type="text" style="width: 840px; value="${this.videosrc}">
-      <input type="text" style="width: 840px; value="${this.findButtonsWithStyleControlId()}">
+      <input type="text" style="width: 840px; value="${this.videosrc}">      
       ${this.renderButtons()}
     `;
   }
