@@ -1,4 +1,4 @@
-//ver 1.3
+//ver 1.4
 import { html,LitElement} from 'https://cdn.jsdelivr.net/gh/lit/dist@2/all/lit-all.min.js';
 
 // define the component
@@ -34,16 +34,7 @@ export class RSPlugIn extends LitElement {
     ShowHide() {
   // Get the value of the input text with id "rsctrlid"
   const inputTextValue = document.querySelector('#rsctrlid').value;
-alert(inputTextValue);
-  // Construct the data-e2e attribute selector
-  const buttonSelector = `button[data-e2e="btn-new-row${inputTextValue}"]`;
-
-  // Find the button using the constructed selector
-  const buttonToHide = document.querySelector(buttonSelector);
-
-  if (buttonToHide) {
-    buttonToHide.style.display = 'none !important';
-  }
+alert(inputTextValue); 
 }
 
   collectStyleControlIds() {
