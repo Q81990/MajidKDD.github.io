@@ -34,17 +34,18 @@ export class RSPlugIn extends LitElement {
     ShowHide() {
   // Get the value of the input text with id "rsctrlid"
   const inputTextValue = document.querySelector('#rsctrlid').value;
-
+alert(inputTextValue);
   // Construct the data-e2e attribute selector
-  const buttonSelector = `button[data-e2e="btn-new-row_${inputTextValue}"]`;
+  const buttonSelector = `button[data-e2e="btn-new-row${inputTextValue}"]`;
 
   // Find the button using the constructed selector
   const buttonToHide = document.querySelector(buttonSelector);
 
   if (buttonToHide) {
-    buttonToHide.style.display = 'none';
+    buttonToHide.style.display = 'none !important';
   }
 }
+
   collectStyleControlIds() {
     const divsWithClass = document.querySelectorAll('.nx-repeating-section-container');
     const styleControlIds = [];
