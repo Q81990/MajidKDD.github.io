@@ -1,4 +1,4 @@
-//ver 1
+//ver 1.1
 import { html,LitElement} from 'https://cdn.jsdelivr.net/gh/lit/dist@2/all/lit-all.min.js';
 
 // define the component
@@ -31,7 +31,9 @@ export class RSPlugIn extends LitElement {
   }
 
   
-  
+    ShowHide() {
+    alert('Hello');
+  }
   collectStyleControlIds() {
     const divsWithClass = document.querySelectorAll('.nx-repeating-section-container');
     const styleControlIds = [];
@@ -81,6 +83,7 @@ this.hide = false;
 render() {
     return html`
       <input type="text" value="${this.videosrc}">
+      <button @click="${this.ShowHide}">Click Me</button>
       ${this.renderButtons()}
     `;
   }
