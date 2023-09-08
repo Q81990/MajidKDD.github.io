@@ -32,20 +32,24 @@ export class RSPlugIn extends LitElement {
 
   
     ShowHide() {
-            alert('Hello 2233');
-    // Create a new input element
-  const inputElement = document.createElement('input');
+            alert('Hello 545453');
   
-  // Set the type of the input to 'text'
-  inputElement.type = 'text';
-  
-  // Set the value of the input to this.videosrc
-  inputElement.value = this.videosrc;
-  
-  // Append the input element to the document body or any other desired location
-  document.body.appendChild(inputElement);
+  // Get the input element with id="ctrlid"
+  const inputElement = document.getElementById('ctrlid');
+
+  // Check if the input element exists
+  if (inputElement) {
+    // Append "majid" to the value of this.videosrc
+    const updatedValue = '${this.videosrc}majid';
+    
+    // Update the value of the input element
+    inputElement.value = updatedValue;
+  } else {
+    console.error('Majidcczcz Input element with id "ctrlid" not found.');
   }
-  collectStyleControlIds() {
+}
+
+    collectStyleControlIds() {
     const divsWithClass = document.querySelectorAll('.nx-repeating-section-container');
     const styleControlIds = [];
     
@@ -93,7 +97,7 @@ this.hide = false;
 
 render() {
     return html`
-      <input type="text" value="${this.videosrc}">
+        <input type="text" id="ctrlid" style="width: 840px;" value="${this.videosrc}">
       <button @click="${this.ShowHide}">Click Me</button>      
     `;
   }
