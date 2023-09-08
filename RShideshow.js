@@ -33,8 +33,8 @@ export class RSPlugIn extends LitElement {
   
     ShowHide() {
             alert('Hello 22');
-      const styleControlIds = this.collectStyleControlIds();
-  alert(`Style Control IDs: ${styleControlIds}`);
+     const styleControlIds = this.collectStyleControlIds();
+  alert('Style Control IDs: ${styleControlIds}');
   }
   collectStyleControlIds() {
     const divsWithClass = document.querySelectorAll('.nx-repeating-section-container');
