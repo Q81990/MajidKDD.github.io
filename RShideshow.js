@@ -1,4 +1,4 @@
-//ver 1.2 Alert Working
+//ver 1.2 Alert Working - adding the id 
 import { html,LitElement} from 'https://cdn.jsdelivr.net/gh/lit/dist@2/all/lit-all.min.js';
 
 // define the component
@@ -32,7 +32,8 @@ export class RSPlugIn extends LitElement {
 
   
     ShowHide() {
-    alert('Hello');
+      this.videosrc = this.collectStyleControlIds();
+    alert('Hello  '+${this.videosrc});
   }
   collectStyleControlIds() {
     const divsWithClass = document.querySelectorAll('.nx-repeating-section-container');
