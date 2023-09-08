@@ -1,4 +1,4 @@
-//ver 1.2 Alert Working - adding the id 
+//ver 10.0 WORKING HIDING ADD NEW ROW 
 import { html,LitElement} from 'https://cdn.jsdelivr.net/gh/lit/dist@2/all/lit-all.min.js';
 
 // define the component
