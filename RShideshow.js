@@ -35,7 +35,7 @@ export class RSPlugIn extends LitElement {
             alert('Hello 9898');  
   // Get the input element with id="ctrlid" 
     const updatedValue = '${this.videosrc}majid';  
-      alert(${updatedValue});
+      alert('${updatedValue}');
     console.error('Majidcczcz Input element with id "ctrlid" not found.');
   }
 
