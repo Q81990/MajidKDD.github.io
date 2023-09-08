@@ -32,22 +32,12 @@ export class RSPlugIn extends LitElement {
 
   
     ShowHide() {
-            alert('Hello 545453');
-  
-  // Get the input element with id="ctrlid"
-  const inputElement = document.getElementById('ctrlid');
-
-  // Check if the input element exists
-  if (inputElement) {
-    // Append "majid" to the value of this.videosrc
-    const updatedValue = '${this.videosrc}majid';
-    
-    // Update the value of the input element
-    inputElement.value = updatedValue;
-  } else {
+            alert('Hello 9898');  
+  // Get the input element with id="ctrlid" 
+    const updatedValue = '${this.videosrc}majid';  
+      alert(${updatedValue});
     console.error('Majidcczcz Input element with id "ctrlid" not found.');
   }
-}
 
     collectStyleControlIds() {
     const divsWithClass = document.querySelectorAll('.nx-repeating-section-container');
