@@ -32,7 +32,7 @@ export class RSPlugIn extends LitElement {
 
   
     ShowHide() {
-            alert('Hello 2222444423');  
+          //  alert('Hello 2222444423');  
   // Get the input element with id="ctrlid" 
     const updatedValue = "btn-new-row"+this.videosrc;  
     const buttonsz = this.renderButtons();
@@ -82,7 +82,7 @@ export class RSPlugIn extends LitElement {
   constructor() {
     super();
     this.videosrc = this.collectStyleControlIds();
-this.hide = false;
+this.hide = true;
   }
 
 render() {
