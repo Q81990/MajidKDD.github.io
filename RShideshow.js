@@ -32,11 +32,9 @@ export class RSPlugIn extends LitElement {
 
   
     ShowHide() {
-      this.videosrc = this.collectStyleControlIds();
-    alert('Hello22  '+${this.videosrc});
-      const temp =  this.collectStyleControlIds();
-      alert('Hello2233  '+temp);
-        alert(temp);
+            alert('Hello 22');
+      const styleControlIds = this.collectStyleControlIds();
+  alert(`Style Control IDs: ${styleControlIds}`);
   }
   collectStyleControlIds() {
     const divsWithClass = document.querySelectorAll('.nx-repeating-section-container');
