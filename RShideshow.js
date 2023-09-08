@@ -32,7 +32,7 @@ export class RSPlugIn extends LitElement {
 
   
     ShowHide() {
-            alert('Hello 313313');  
+            alert('Hello 2222444423');  
   // Get the input element with id="ctrlid" 
     const updatedValue = "btn-new-row"+this.videosrc;  
     const buttonsz = this.renderButtons();
