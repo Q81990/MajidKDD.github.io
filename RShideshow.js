@@ -32,10 +32,10 @@ export class RSPlugIn extends LitElement {
 
   
     ShowHide() {
-            alert('Hello 9898');  
+            alert('Hello 313313');  
   // Get the input element with id="ctrlid" 
     const updatedValue = '${this.videosrc}majid';  
-     findButtonsWithStyleControlId();
+    const buttonsz = this.findButtonsWithStyleControlId();
     console.error('Majidcczcz Input element with id "ctrlid" not found.');
   }
 
