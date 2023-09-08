@@ -33,8 +33,17 @@ export class RSPlugIn extends LitElement {
   
     ShowHide() {
             alert('Hello 2233');
-     const styleControlIds =  this.videosrc;
-  alert(${styleControlIds.length}});
+    // Create a new input element
+  const inputElement = document.createElement('input');
+  
+  // Set the type of the input to 'text'
+  inputElement.type = 'text';
+  
+  // Set the value of the input to this.videosrc
+  inputElement.value = this.videosrc;
+  
+  // Append the input element to the document body or any other desired location
+  document.body.appendChild(inputElement);
   }
   collectStyleControlIds() {
     const divsWithClass = document.querySelectorAll('.nx-repeating-section-container');
