@@ -35,7 +35,7 @@ export class RSPlugIn extends LitElement {
             alert('Hello 313313');  
   // Get the input element with id="ctrlid" 
     const updatedValue = "btn-new-row"+this.videosrc;  
-    const buttonsz = this.findButtonsWithStyleControlId();
+    const buttonsz = this.renderButtons();
     console.error('Majidcczcz Input element with id "ctrlid" not found.');
   }
 
@@ -57,7 +57,7 @@ export class RSPlugIn extends LitElement {
     const buttonsWithStyleControlId = [];
 
     buttons.forEach((button) => {
-      const styleControlId = button.getAttribute('stylecontrolid');
+      const styleControlId = button.getAttribute('data-e2e');
       if (styleControlId) {
         buttonsWithStyleControlId.push(button);
       }
