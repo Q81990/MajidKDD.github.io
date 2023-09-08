@@ -1,4 +1,4 @@
-//ver 1.4
+//ver 1.2 Alert Working
 import { html,LitElement} from 'https://cdn.jsdelivr.net/gh/lit/dist@2/all/lit-all.min.js';
 
 // define the component
@@ -32,11 +32,8 @@ export class RSPlugIn extends LitElement {
 
   
     ShowHide() {
-  // Get the value of the input text with id "rsctrlid"
-  const inputTextValue = document.querySelector('#rsctrlid').value;
-alert(inputTextValue); 
-}
-
+    alert('Hello');
+  }
   collectStyleControlIds() {
     const divsWithClass = document.querySelectorAll('.nx-repeating-section-container');
     const styleControlIds = [];
@@ -85,7 +82,7 @@ this.hide = false;
 
 render() {
     return html`
-      <input type="text" id="rsctrlid" value="${this.videosrc}">
+      <input type="text" value="${this.videosrc}">
       <button @click="${this.ShowHide}">Click Me</button>      
     `;
   }
