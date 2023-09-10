@@ -32,6 +32,7 @@ export class RSPlugIn extends LitElement {
 
   toggleHide(event) {
   this.hide = event.target.checked;
+    this.ShowHide();
 }
 
     ShowHide() {
