@@ -1,4 +1,4 @@
-//ver 10.2 WORKING HIDING ADD NEW ROW 0.1 adding check box hide2
+//ver 10.3 WORKING HIDING ADD NEW ROW 0.1 adding check box hide3
 import { html,LitElement} from 'https://cdn.jsdelivr.net/gh/lit/dist@2/all/lit-all.min.js';
 
 // define the component
@@ -6,6 +6,7 @@ export class RSPlugIn extends LitElement {
   static properties = {
     videosrc: { type: String },
     hide: { type: Boolean, enum: [true, false] },
+    _hide : { type: Boolean},
   };
 
   static getMetaConfig() {
@@ -18,18 +19,27 @@ export class RSPlugIn extends LitElement {
         videosrc: {
           type: 'string',
           enum: [true, false], // Enum values for hide property
-          title: 'Media Source',
-          description: 'Imported YouTube embedded link is needed (e.g., https://www.youtube.com/embed/vpKcM4MxPzc)',
+          title: 'RS Source',
+          description: 'RS list',
         },
         hide: {
           type: 'boolean',
-          title: 'Hide Video',
-          description: 'Set to true to hide the video, false to display it.',
+          title: 'Hide new row',
+          description: 'Set to true to hide the RS btn, false to display it.',
         },
       },
     };
   }
 
+   // Property setter for 'hide' property
+  set hide(value) {
+    const oldValue = this._hide;
+    this._hide = value;
+
+    if (oldValue !== value) {
+      this.renderButtons(); // Call renderButtons when '_hide' changes
+    }
+  }
   toggleHide(event) {
   this.hide = event.target.checked;
     this.ShowHide();
@@ -59,7 +69,6 @@ export class RSPlugIn extends LitElement {
   findButtonsWithStyleControlId() {
     const buttons = document.querySelectorAll('button[data-e2e^="btn-new-row"]');
     const buttonsWithStyleControlId = [];
-
     buttons.forEach((button) => {
       const styleControlId = button.getAttribute('data-e2e');
       if (styleControlId) {
@@ -72,9 +81,8 @@ export class RSPlugIn extends LitElement {
 
   renderButtons() {
     const buttons = this.findButtonsWithStyleControlId();
-
     buttons.forEach((button) => {
-      if (this.hide) {
+      if (this._hide) {
         button.style.display = 'none'; // Hide the button if hide is true
       } else {
         button.style.display = ''; // Show the button if hide is false
@@ -87,6 +95,7 @@ export class RSPlugIn extends LitElement {
     super();
     this.videosrc = this.collectStyleControlIds();
 this.hide = true;
+    this._hide = false;
   }
 
 render() {
