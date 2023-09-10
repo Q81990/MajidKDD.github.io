@@ -1,4 +1,4 @@
-//ver 10.0 WORKING HIDING ADD NEW ROW 
+//ver 10.1 WORKING HIDING ADD NEW ROW 0.1 adding check box hide
 import { html,LitElement} from 'https://cdn.jsdelivr.net/gh/lit/dist@2/all/lit-all.min.js';
 
 // define the component
@@ -30,7 +30,10 @@ export class RSPlugIn extends LitElement {
     };
   }
 
-  
+  toggleHide(event) {
+  this.hide = event.target.checked;
+}
+
     ShowHide() {
           //  alert('Hello 2222444423');  
   // Get the input element with id="ctrlid" 
@@ -88,7 +91,9 @@ this.hide = true;
 render() {
     return html`
         <input type="text" id="ctrlid" style="width: 840px;" value="${this.videosrc}">
-      <button @click="${this.ShowHide}">Click Me</button>      
+<label for="hideCheckbox">Hide Video</label>
+    <input type="checkbox" id="hideCheckbox"  @change="${this.toggleHide}"?checked="${this.hide}">
+    <button @click="${this.ShowHide}">Click Me</button>      
     `;
   }
 
