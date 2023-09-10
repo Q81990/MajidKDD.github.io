@@ -1,4 +1,4 @@
-//ver 10.3 WORKING HIDING ADD NEW ROW 0.1 adding check box hide3
+//ver 11 WORKING HIDING ADD NEW ROW 11 adding check box hide11
 import { html,LitElement} from 'https://cdn.jsdelivr.net/gh/lit/dist@2/all/lit-all.min.js';
 
 // define the component
@@ -98,12 +98,15 @@ this.hide = true;
     this._hide = false;
   }
 
+/*
+//  <input type="text" id="ctrlid" style="width: 840px;" value="${this.videosrc}">
+//  <label for="hideCheckbox">Hide Video</label>
+//  <input type="checkbox" id="hideCheckbox"  @change="${this.toggleHide}"?checked="${this.hide}">
+//  <button @click="${this.ShowHide}">Click Me</button> 
+*/
+  
 render() {
-    return html`
-        <input type="text" id="ctrlid" style="width: 840px;" value="${this.videosrc}">
-<label for="hideCheckbox">Hide Video</label>
-    <input type="checkbox" id="hideCheckbox"  @change="${this.toggleHide}"?checked="${this.hide}">
-    <button @click="${this.ShowHide}">Click Me</button>      
+    return html`           
     `;
   }
 
