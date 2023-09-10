@@ -1,4 +1,4 @@
-//ver 10.1 WORKING HIDING ADD NEW ROW 0.1 adding check box hide
+//ver 10.2 WORKING HIDING ADD NEW ROW 0.1 adding check box hide2
 import { html,LitElement} from 'https://cdn.jsdelivr.net/gh/lit/dist@2/all/lit-all.min.js';
 
 // define the component
