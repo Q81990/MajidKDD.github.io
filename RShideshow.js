@@ -46,11 +46,9 @@ export class RSPlugIn extends LitElement {
 }
 
     ShowHide() {
-          //  alert('Hello 2222444423');  
-  // Get the input element with id="ctrlid" 
-    const updatedValue = "btn-new-row"+this.videosrc;  
+     const updatedValue = "btn-new-row"+this.videosrc;  
     const buttonsz = this.renderButtons();
-    console.error('Majidcczcz Input element with id "ctrlid" not found.');
+    console.error('TESTing Input element with id "ctrlid" not found.');
   }
 
     collectStyleControlIds() {
@@ -94,7 +92,7 @@ export class RSPlugIn extends LitElement {
   constructor() {
     super();
     this.videosrc = this.collectStyleControlIds();
-this.hide = true;
+this.hide = false;
     this._hide = false;
   }
 
