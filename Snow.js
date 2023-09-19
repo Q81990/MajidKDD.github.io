@@ -47,10 +47,9 @@ export class snowControl extends LitElement {
   }
 
   async load() {
-    //const snowvar = 'https://dev83014.service-now.com/api/now/table/incident?sysparm_fields=number,short_description,sys_id&caller_id=' + this.callerid;
-   const snowvar =  'https://dev83014.service-now.com/api/now/table/alm_asset?asset_tag=P1000479';
-    const response = await fetch(snowvar, { method: "GET", headers: { "Authorization": "Basic QWRtaW46UU1iblRvOXAlMSFL" } });
-   // const response = await fetch(snowvar, { method: "GET", headers: { } });
+    const snowvar = 'https://dev83014.service-now.com/api/now/table/incident?sysparm_fields=number,short_description,sys_id&caller_id=' + this.callerid;
+   //const snowvar =  'https://dev83014.service-now.com/api/now/table/alm_asset?asset_tag=P1000479';
+    const response = await fetch(snowvar, { method: "GET", headers: { "Authorization": "Basic QWRtaW46UU1iblRvOXAlMSFL" } });   
     if (response.ok) {
       const myJson = await response.json();
       const result = myJson.result;
