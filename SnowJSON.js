@@ -1,4 +1,4 @@
-//ver 4
+//ver 5
 import { css, html, LitElement } from 'https://cdn.jsdelivr.net/gh/lit/dist@2/all/lit-all.min.js';
 
 export class snowJsonControl extends LitElement {
@@ -31,12 +31,16 @@ export class snowJsonControl extends LitElement {
       controlName: 'SNow ControJSON',
       fallbackDisableSubmit: false,
       version: '1.3',
-      properties: {
-          incnumJson: { type: String }, // Add a property to hold the JSON value
+      properties: {         
         incnum: {
           type: 'string',
           title: 'IncidentNumber',
           description: 'Type the Incident number here'
+        },
+                outcome: {
+            type: 'string',
+            title: 'outcome',
+            isValueField: true,
         },
                 callerid: {
           type: 'string',
@@ -65,6 +69,7 @@ export class snowJsonControl extends LitElement {
     super();
     this.incnum = [];
     this.selectedOption = "";
+    this.outcome = "";
   }
 
   async connectedCallback() {
@@ -72,13 +77,14 @@ export class snowJsonControl extends LitElement {
     //this.callerid = 'David.Miller';
     this.incnum = await this.load();
      // Set incnumJson property with the JSON representation of incnum
-    this.incnumJson = JSON.stringify(this.incnum, null, 2);
+    this.outcome = JSON.stringify(this.incnum, null, 2);
   }
 
 render() {
+  this.outcome = JSON.stringify(this.incnum, null, 2);
    return html`
     <label for="selectedValue">JSON Description (JavaScript Variable):</label>
-    <textarea id="selectedValue" class="expandable_input">${this.incnumJson}</textarea>     
+    <textarea id="selectedValue" class="expandable_input">${this.outcome}</textarea>     
   `;
 }
 
