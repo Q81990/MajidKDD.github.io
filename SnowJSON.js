@@ -1,4 +1,4 @@
-//ver 2
+//ver 3
 import { css, html, LitElement } from 'https://cdn.jsdelivr.net/gh/lit/dist@2/all/lit-all.min.js';
 
 export class snowJsonControl extends LitElement {
@@ -72,13 +72,15 @@ export class snowJsonControl extends LitElement {
     this.incnum = await this.load();
   }
 
-  render() {
+render() {
   const incnumJson = JSON.stringify(this.incnum, null, 2); // Convert to formatted JSON
+  const formattedIncnumJson = incnumJson.replace(/^"(.*)"$/, '$1'); // Remove surrounding double quotes
   return html`
-    <label for="selectedValue">JSON Description (JSON):</label>
-    <textarea  id="selectedValue" class="expandable_input">${incnumJson}</textarea>     
+    <label for="selectedValue">JSON Description (JavaScript Variable):</label>
+    <textarea id="selectedValue" class="expandable_input">${formattedIncnumJson}</textarea>     
   `;
 }
+
 
 
   _handleClick(e) {
