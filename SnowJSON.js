@@ -1,4 +1,4 @@
-//ver 1
+//ver 2
 import { css, html, LitElement } from 'https://cdn.jsdelivr.net/gh/lit/dist@2/all/lit-all.min.js';
 
 export class snowJsonControl extends LitElement {
@@ -48,8 +48,8 @@ export class snowJsonControl extends LitElement {
   }
 
   async load() {
-    const snowvar = 'https://dev83014.service-now.com/api/now/table/incident?sysparm_fields=number,short_description,sys_id&caller_id=' + this.callerid;
-   //const snowvar =  'https://dev83014.service-now.com/api/now/table/alm_asset?asset_tag=P1000479';
+    //const snowvar = 'https://dev83014.service-now.com/api/now/table/incident?sysparm_fields=number,short_description,sys_id&caller_id=' + this.callerid;
+   const snowvar =  'https://dev83014.service-now.com/api/now/table/alm_asset?asset_tag=P1000479';
     const response = await fetch(snowvar, { method: "GET", headers: { "Authorization": "Basic QWRtaW46UU1iblRvOXAlMSFL" } });   
     if (response.ok) {
       const myJson = await response.json();
@@ -75,22 +75,8 @@ export class snowJsonControl extends LitElement {
   render() {
   const incnumJson = JSON.stringify(this.incnum, null, 2); // Convert to formatted JSON
   return html`
-    <label for="numberDropdown">Select a Task Number:</label>
-    <select id="numberDropdown" @change="${this.handleDropdownChange}">
-      ${dropdownOptions}
-    </select>
-    <label for="selectedValue">Task Description (JSON):</label>
-    <textarea
-      id="selectedValue"
-      readonly
-      class="expandable_input"
-    >${incnumJson}</textarea>
-     <input
-      id="optiontext"
-      type="text"
-      .value="${this.selectedSysId}"
-      hidden 
-    />
+    <label for="selectedValue">JSON Description (JSON):</label>
+    <textarea  id="selectedValue" class="expandable_input">${incnumJson}</textarea>     
   `;
 }
 
