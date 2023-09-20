@@ -1,4 +1,4 @@
-//ver 3
+//ver 4
 import { css, html, LitElement } from 'https://cdn.jsdelivr.net/gh/lit/dist@2/all/lit-all.min.js';
 
 export class snowJsonControl extends LitElement {
@@ -32,6 +32,7 @@ export class snowJsonControl extends LitElement {
       fallbackDisableSubmit: false,
       version: '1.3',
       properties: {
+          incnumJson: { type: String }, // Add a property to hold the JSON value
         incnum: {
           type: 'string',
           title: 'IncidentNumber',
@@ -70,14 +71,14 @@ export class snowJsonControl extends LitElement {
     super.connectedCallback();
     //this.callerid = 'David.Miller';
     this.incnum = await this.load();
+     // Set incnumJson property with the JSON representation of incnum
+    this.incnumJson = JSON.stringify(this.incnum, null, 2);
   }
 
 render() {
-  const incnumJson = JSON.stringify(this.incnum, null, 2); // Convert to formatted JSON
-  const formattedIncnumJson = incnumJson.replace(/^"(.*)"$/, '$1'); // Remove surrounding double quotes
-  return html`
+   return html`
     <label for="selectedValue">JSON Description (JavaScript Variable):</label>
-    <textarea id="selectedValue" class="expandable_input">${formattedIncnumJson}</textarea>     
+    <textarea id="selectedValue" class="expandable_input">${this.incnumJson}</textarea>     
   `;
 }
 
