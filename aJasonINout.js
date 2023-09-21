@@ -202,5 +202,5 @@ async connectedCallback() {
 }
 
 
-const elementName = 'snow-Jay1';
+const elementName = 'snow-json1';
 customElements.define(elementName, JSonInOut);
