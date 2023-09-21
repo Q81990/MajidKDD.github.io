@@ -202,5 +202,5 @@ async connectedCallback() {
 }
 
 
-const elementName = 'JSonInOut-ctrl';
+const elementName = 'snow-Jay1';
 customElements.define(elementName, JSonInOut);
