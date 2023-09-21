@@ -1,4 +1,3 @@
-
 import { html,css, LitElement} from 'https://cdn.jsdelivr.net/gh/lit/dist@2/all/lit-all.min.js';
 
 export class JSonInOut extends LitElement {
@@ -64,7 +63,7 @@ export class JSonInOut extends LitElement {
   `
    static properties = {
     title: { type: String },
-    value: { type: Object }, // Change the type to Object for JSON data
+    value: { type: String }, // Change the type to Object for JSON data
     options: { type: String },
     readOnly: {},
     JSONvalue: { type: String },
@@ -106,15 +105,13 @@ export class JSonInOut extends LitElement {
 
 // Define a function for the API endpoint URL
 apiEndpoint(assetTag) {
-  return `https://dev83014.service-now.com/api/now/table/alm_asset?asset_tag=${assetTag}`;
+  return 'https://dev83014.service-now.com/api/now/table/alm_asset?asset_tag=${assetTag}';
 }
 
 
 async load(assetTag) {
-  const response = await fetch(this.apiEndpoint(assetTag), {
-    method: "GET",
-    headers: { "Authorization": "Basic QWRtaW46UU1iblRvOXAlMSFL" }
-  });   
+  const snowvar =  'https://dev83014.service-now.com/api/now/table/alm_asset?asset_tag=P1000479'; //this.apiEndpoint(assetTag);
+    const response = await fetch(snowvar, { method: "GET", headers: { "Authorization": "Basic QWRtaW46UU1iblRvOXAlMSFL" } }); 
   if (response.ok) {
     const myJson = await response.json();
     const result = myJson.result;
@@ -127,14 +124,14 @@ async load(assetTag) {
   // Add an event listener for radio button clicks
 optionClicked(e) {
   const assetTag = e.target.value; // Get the asset_tag from the clicked radio button
-  //this.loadAndUpdateValue(assetTag);
+  this.loadAndUpdateValue(assetTag);
 
   // Dispatch a custom event with the specified properties
   const args = {
     bubbles: true,
     cancelable: false,
     composed: true,
-    detail: await this.load(assetTag),
+    detail: e.srcElement.innerText,
   };
   const event = new CustomEvent('ntx-value-change', args);
   this.dispatchEvent(event);
